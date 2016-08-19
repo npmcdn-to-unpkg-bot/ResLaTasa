@@ -1,0 +1,10 @@
+.margin-bottom-object.container-fluid
+  div template="ngIf !isShow"
+    i.fa.fa-play-circle-o.play-circle (click)="isShow = true"
+    pre
+      | {{'landing.funciona' | i18n }}
+  div.modal-video template="ngIf isShow" (click)="isShow = false"
+    .exit
+      i.fa.fa-times
+    div.content-video
+      <iframe [src]="videoUrl" frameborder="0"  allowfullscreen></iframe>

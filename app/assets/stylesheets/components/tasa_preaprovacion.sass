@@ -1,0 +1,90 @@
+@import "tasa"
+
+aviso-animado-privacy
+  +make-col
+  +make-col-span(12)
+  +addTopSpace
+        
+  .cuerpo
+    border: 3px solid $green
+    border-radius: 5px
+    padding-bottom: 15px
+
+  .button-centrar
+    +make-col
+    +make-col-span(12)
+    padding: 3em 0 1em 0
+    text-align: center !important
+  .btn-next
+    float: none !important  
+    +media-breakpoint-down(sm)
+      +make-col-span(9.6)
+    +media-breakpoint-up(md)  
+      +make-col-span(5)
+    +media-breakpoint-up(lg)
+      +make-col-span(3.4)  
+  
+  p.alll
+    +make-col
+    +make-col-span(9.8)
+    +make-col-offset(1.1)
+    text-align: justify
+    display: -webkit-inline-box
+    +media-breakpoint-down(xs)
+      +make-col
+      +make-col-span(12)
+      +make-col-offset(0)
+      //+make-col-offset(0.2)
+  
+  p.other
+    margin-top: 3px
+    +media-breakpoint-between(xs,md)
+      margin-left: 7px !important
+    +media-breakpoint-down(xs)
+      font-size: 12px
+
+  .checkbox
+    display: flex
+    +make-col
+    +make-col-offset(1.1)
+    text-align:justify
+    +media-breakpoint-down(xs)
+      +make-col
+      +make-col-span(12)
+      +make-col-offset(0)
+
+  a.sec
+    text-decoration: underline
+    +media-breakpoint-between(xs,md)
+      text-decoration: none
+    +media-breakpoint-down(xs)
+      font-size: 15px
+      text-decoration: none  
+      font-size: 12px
+
+  a
+    margin-top: 3px
+    +media-breakpoint-down(xs)
+      font-size: 15px
+    
+  .my-decoration
+    text-decoration: underline
+
+  .show-one
+    display: none !important
+    +media-breakpoint-between(xs,md)
+      display: -webkit-inline-box !important
+    +media-breakpoint-down(xs)
+      display: -webkit-inline-box !important
+  
+  .show-two
+    display: -webkit-inline-box !important
+    +media-breakpoint-between(xs,md)
+      display: none !important
+    +media-breakpoint-down(xs)
+      display: none !important
+
+  h2
+    text-align: center
+
+  

@@ -1,0 +1,20 @@
+div [ngClass]="{'app': !isLanding, 'landing': isLanding}"
+  .logo-container
+    img src="/images/logo.svg"
+  
+  .title-app template="ngIf !isLanding"
+    h1
+      strong {{title}}
+
+  div [ngClass]="{'button-app': !isLanding, 'button-landing': isLanding}" template="ngIf showButton"
+    a href="{{loginUrl}}"
+      button.btn-next.waves-effect.waves-button.waves-float.waves-light template="ngIf !isLogged"
+        div
+          span.button-text-icon {{'header.loggin' | i18n}}
+    button.btn-back.waves-effect.waves-button.waves-float.waves-dark template="ngIf isLogged" (click)="loggout()"
+      div
+        span.button-text-icon {{'header.loggout' | i18n}}
+  .division
+    hr template="ngIf !isLanding"
+
+  

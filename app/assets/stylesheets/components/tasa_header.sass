@@ -1,0 +1,118 @@
+@import "tasa"
+
+tasa-header
+
+  $logo-height: 6em
+
+  min-height: $header-height !important
+  max-height: $header-height !important
+  +media-breakpoint-down(sm)
+    min-height: $header-height-mobil !important
+    max-height: $header-height-mobil !important
+
+  .landing
+    +make-container
+    padding-left: 0px !important
+    padding-right: 0px !important
+    min-height: $header-height !important
+    max-height: $header-height !important
+    background-color: white !important
+    box-shadow: 0px 5px 30px 2px $black
+    +media-breakpoint-down(xs)
+      min-height: $header-height-mobil !important
+      max-height: $header-height-mobil !important
+  
+  .logo-container
+    +make-col
+    +make-col-span(2)
+    +make-col-offset(1)
+    max-height: $header-height !important
+    +media-breakpoint-down(xs)
+      height: $header-height-mobil !important
+      +make-col-offset(0)
+    
+    img
+      height: $logo-height
+      margin-top: .1em
+      +media-breakpoint-down(md)
+        margin-top: .1em
+        height: $logo-height
+      +media-breakpoint-down(xs)
+        height: $logo-height - 3em
+        margin-left: 0px
+
+  .button-landing
+    +make-col
+    +make-col-span(7)
+    +make-col-offset(3)
+    text-align: center
+    +media-breakpoint-up(sm)
+      +make-col-span(3)
+      +make-col-offset(5)
+    +media-breakpoint-up(lg)
+      +make-col-offset(6)
+    button
+      width: 10em
+      top: 5px
+      +media-breakpoint-up(sm)
+        top: 25px
+      +media-breakpoint-up(lg)
+        width: 12em
+        
+
+  .app
+    @extend .landing
+    box-shadow: none
+
+  .title-app
+    +make-col
+    +make-col-span(5)
+    +make-col-offset(1)
+    color: $blue-dark
+    padding-top: 1em
+    text-align: center
+    +media-breakpoint-up(sm)
+      padding-top: 2em
+    +media-breakpoint-up(md)
+      +make-col-span(6)
+      +make-col-offset(0)
+
+  .button-app
+    +make-col
+    +make-col-span(4)
+    text-align: right
+    +media-breakpoint-up(sm)
+      +make-col-span(2)
+    +media-breakpoint-up(lg)
+      +make-col-offset(1)
+      +make-col-span(1.5)
+
+    button
+      width: 100%
+      top: 5px
+      +media-breakpoint-up(sm)
+        top: 25px
+      +media-breakpoint-up(lg)
+        width: 100%
+  
+  .division
+    +make-col
+    +make-col-span(12)
+    +media-breakpoint-up(sm)
+      +make-col-span(10)
+      +make-col-offset(1)
+    +media-breakpoint-up(lg)
+      +make-col-span(12)
+      +make-col-offset(0)
+      padding-left: 0px
+      padding-right: 0px
+    hr
+      +make-col
+      +make-col-span(12)
+      background: $black
+      margin-top: 0
+      margin-bottom: 0
+      padding-left: 0px
+      padding-right: 0px
+    
+

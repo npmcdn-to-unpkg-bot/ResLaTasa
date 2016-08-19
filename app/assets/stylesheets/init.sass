@@ -1,0 +1,318 @@
+// Place all the styles related to the landing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap_variables"
+@import "bootstrap"
+@import "bootstrap_utilities"
+@import "font-awesome"
+
+/*App*/
+.tasa-app
+  background: $blue
+  width: 100%
+  height: 100%
+  display: inline-flex
+  overflow: hidden
+
+.div-principal
+  +make-col
+  +make-col-span(12)
+  margin-top : 17px
+  margin-bottom : 17px
+  background : white
+  height: 100%
+  min-height: calc(100vh - 34px)
+  box-shadow: 5px 0px 5px 5px #0092CA
+  display: block
+  +media-breakpoint-up(sm)
+    margin-top: 24px
+    margin-bottom : 24px
+    min-height: calc(100vh - 48px)
+  +media-breakpoint-up(lg)
+    margin-top : 7px
+    margin-bottom : 0px
+    padding-left: 0px !important
+    padding-right: 0px !important
+    min-height: calc(100vh - 7px)
+    +make-col-span(10)
+    +make-col-offset(1)
+
+.tasa-div-form
+  +make-col
+  +make-col-span(12)
+  padding-left: 0px !important
+  padding-right: 0px !important
+  +media-breakpoint-up(sm)
+    +make-col-span(10)
+    +make-col-offset(1)
+.foo
+  height: calc(100vh)
+  max-height: calc(100vh - 134px)
+  +media-breakpoint-up(sm)
+    max-height: calc(100vh - 148px)
+  +media-breakpoint-up(lg)
+    max-height: calc(100vh - 107px)
+
+/*Inputs*/
+.tasa-input
+  input:not([type=checkbox])
+    +tasaInput
+    +make-col
+    +make-col-span(12)
+    margin-bottom: 0 !important
+
+  label
+    margin-top: 1em
+    color: #00548B 
+    font-size: .75rem //mobil
+    margin-bottom: 0
+    +media-breakpoint-up(sm) //tablet, desktop
+      font-size: 1rem
+  .label-disabled
+    color: $gray-dark
+
+  @include placeholder()
+    color: $gray-dark
+    opacity: 0.3
+
+/*Select*/
+.tasa-select
+  position: relative
+  &::after
+    padding-top: 3px
+    content: "\025be"
+    text-align: center
+    width: 35px
+    height: 32px
+    background-color: $gray-light
+    position: absolute
+    top: 1px
+    right: 1px
+    pointer-events: none
+    border-top-right-radius: 2px
+    border-bottom-right-radius: 2px
+
+select
+  +tasaInput
+  +make-col
+  +make-col-span(12)
+ 
+
+  option
+    color: black
+    &:checked
+      box-shadow: 0 0 10px 100px #1882A8 inset
+
+.option-deafult
+  color: #DEDEDE !important// = $gray-dark, opacity 0.3 
+  //pendiente cmo mostrat aimagens
+.selectedOption
+  color: $black !important
+
+
+ 
+
+/*Angular Validations*/
+.ng-invalid
+  border-color: $red !important
+
+.ng-valid
+  border-color: $green !important
+
+.ng-untouched 
+  border-color: $blue-light !important
+
+.error-message
+  color: $red !important
+  font-size: .75rem
+
+
+/*Botones*/
+/*$bgColor, $textColor, $bdrColor, $bgColorD, $textColorD , $textColorH , $bdrColorH, $textColorA , $bdrColorA, iconSize */
+.btn-back
+  +tasaButton(white, $gray-dark, $blue-light, $gray-light , $gray, $blue, $blue-light, $blue, $blue, $iconosNavegacion)
+  i
+    font-weight: bold
+    padding-left: 0
+  
+.btn-next
+  +btnNext
+
+.btn-info-blue
+  +tasaButton($blue, white, $blue, $gray-light, $gray, white, $blue, white, $blue,$iconosInfomrativos)
+
+.btn-info-orange
+  +tasaButton($orange, white, $orange, $gray-light, $gray, white, $orange, white, $orange, $iconosInfomrativos)
+
+.imagen-btn
+  +imagenBtn
+
+  .active
+    background-color: $blue !important
+    border-color: $blue !important
+    color: white !important
+
+  img
+    width: 75px
+    height: 75px
+    
+  .btn-image
+    +tasaButton(white, $gray-dark, $blue-light, $gray-light, $gray, $blue, $blue-light, $blue, $blue, $iconosInfomrativos)
+
+
+/*Secciones*/
+.section-header
+  +make-col
+  +make-col-span(12)
+  margin-top: 1em
+  background-color: $blue-light
+  color: $gray-dark
+  font-size: 0.875rem
+  font-weight: bold !important
+  border: 1px solid $blue-light
+  padding: $padding
+  padding-left: 34px
+  border-top-left-radius: 3px
+  border-top-right-radius: 3px
+  +media-breakpoint-up(sm) //tablet, desktop
+    font-size: 21px
+  +media-breakpoint-down(sm)
+    padding-left: 19px
+.section-body
+  +make-col
+  +make-col-span(12)
+  border: 2px solid $blue-light
+  padding: $padding
+  border-bottom-left-radius: 3px
+  border-bottom-right-radius: 3px
+  margin-bottom: 1em
+  +media-breakpoint-between(sm, lg)
+    padding-left: 25px
+    padding-right: 25px 
+
+  form
+    +make-col
+    +make-col-span(12)
+    +media-breakpoint-down(sm)
+      padding-left: 0px !important
+      padding-right: 0px !important
+
+
+/*Checkbox*/
+.checkbox
+  margin-top: 10px
+
+  label
+    padding-left: 0 !important
+
+  label:not(firts-child)
+  & a
+    padding-left: 5px !important
+
+  input[type=checkbox] 
+    display: none
+  
+  input[type=checkbox] + label:before
+    content: ""
+    display: inline-block
+    
+    padding-top: 3px !important
+    width: 20px
+    height: 20px
+    vertical-align: middle
+    background-color: white
+    border: 1px solid $blue
+    
+  input[type=checkbox]:checked + label:before
+    font: normal normal normal 14px/1 FontAwesome
+    font-size: 1em
+    content: "\f00c"
+    color: white
+    text-align: center
+    line-height: 15px
+    background-color: $blue
+
+/*Switch*/
+.switch-btns
+  +switchBtns
+
+
+/*Texto*/
+h1
+  +h1
+h2
+  font-size: 0.875rem
+  +media-breakpoint-up(sm) //tablet
+    font-size: 21px
+  +media-breakpoint-up(lg)//Desktop
+    font-size: 1.5rem
+p, pre
+  font: $font-family-base
+  font-size: 0.875rem
+  +media-breakpoint-up(sm) //tablet, desktop
+    font-size: 1rem
+
+strong
+  font-weight: bold !important
+
+a
+  font-size: 0.625rem
+  +media-breakpoint-up(sm) //tablet, desktop
+    font-size: 0.875rem
+
+.text-footer
+  font-weight: normal !important
+  text-align: right
+  color: $gray 
+  font-size: 0.5rem
+  +media-breakpoint-up(sm) //tablet
+    font-size: 0.625rem
+  +media-breakpoint-up(lg)//Desktop
+    font-size: 0.75rem
+
+.error-message
+  color: $brand-warning
+  font-size: 0.625rem
+  +media-breakpoint-up(sm) //tablet, Desktop
+    font-size: 0.75rem
+
+.text-indicator
+  @extend .error-message
+  color: $gray-dark !important
+
+.fluid
+  width: 100% !important  
+
+/*Colores*/
+.black  
+  color: $black !important
+
+.blue-dark 
+  color: $blue-dark !important
+
+.blue 
+  color: $blue !important
+
+.blue-light
+  color: $blue-light !important
+
+.orange  
+  color: $orange !important 
+
+.green 
+  color: $green !important  
+
+.red  
+  color: $red !important
+
+.gray-dark
+  color: $gray-dark !important
+
+.gray  
+  color: $gray !important
+
+.gray-light  
+  color: $gray-light !important
+.white 
+  color: white !important

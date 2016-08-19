@@ -1,0 +1,70 @@
+@import "tasa"
+  
+estado-laboral
+  .text-blue
+    color: #00548b
+    @include media-breakpoint-up(lg)
+      font-size: 1em
+    @include media-breakpoint-down(md)
+      font-size: 1em
+    @include media-breakpoint-down(sm)
+      font-size: .8em 
+  
+  .text_pregunta
+    text-align: center
+  
+  .catalogoestados
+    text-align: center
+    .empleos
+      +make-col
+      @include media-breakpoint-up(lg)
+        +make-col-span(4)
+      @include media-breakpoint-down(md)
+        +make-col-span(12)
+      .imagen-puesto
+        +make-col
+        @include media-breakpoint-down(sm)
+          +make-col-span(3)
+          padding-left: 0px
+          padding-right: 0px
+        @include media-breakpoint-up(sm)
+          +make-col-span(12)
+      .radio-group
+        +make-col
+        @include media-breakpoint-down(sm)
+          padding-top: 15px
+          +make-col-span(9)
+        @include media-breakpoint-up(sm)
+          +make-col-span(12)        
+    .radio-group label
+      width: 160px !important
+      white-space: inherit !important
+      padding-top: 10px !important
+      height: 45px !important
+      @include media-breakpoint-down(md)
+        width: 300px !important
+      @include media-breakpoint-down(xs)
+        width: 155px !important
+        padding-right: .2em !important
+        padding-left: .2em !important
+    label:not(.active)
+      border: 2px solid #ccc !important
+      border-radius: 0.2rem !important
+      box-shadow: none  !important
+    label.active 
+      border: 2px solid #00A1DF !important
+      border-radius: 0.2rem !important
+      box-shadow: none  !important
+  img
+    @include media-breakpoint-down(sm)
+      width: 70px
+      height: 70px
+  .text h3
+    +media-breakpoint-down(sm)
+      font-size: 1rem
+  
+  #empleado, #otro
+    padding-top: 15px !important
+    
+  .button-text-icon
+    padding-left: 0 !important

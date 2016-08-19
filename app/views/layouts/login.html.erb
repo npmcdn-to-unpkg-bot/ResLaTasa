@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>document.write('<base href="' + document.location + '" />');
+  </script>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+    <%= yield %>
+    
+    <!-- IE required polyfills (from CDN), in this exact order -->
+    <%= javascript_include_tag 'application' %>
+    <script src="javascript/dependencias/shim.min.js"></script>
+    <script src="javascript/dependencias/zone.min.js"></script>
+    <script src="javascript/dependencias/Reflect.js"></script>
+    <script src="javascript/dependencias/system.src.js"></script>
+    <script src="../javascript/dependencias/jsbn.js"></script>
+    <script src="../javascript/dependencias/jsbn2.js"></script>
+    <script src="../javascript/dependencias/sjcl.js"></script>
+    <script src="../javascript/dependencias/moment.min.js"></script>
+    <script src="../javascript/dependencias/aws-cognito-sdk.min.js"></script>
+    <script src="../javascript/dependencias/amazon-cognito-identity.min.js"></script>
+    <script src="../javascript/dependencias/aws-sdk-2.3.5.min.js"></script>
+    <script src="../javascript/dependencias/UserPool.js"></script>
+
+      <!-- 2. Configure SystemJS -->
+      <script src="/javascript/system.config.js"></script>
+      <script>
+        System.import('tasa/login_main.js').catch(function(err){ console.error(err);  });
+      </script>
+</body>
+
+</html>

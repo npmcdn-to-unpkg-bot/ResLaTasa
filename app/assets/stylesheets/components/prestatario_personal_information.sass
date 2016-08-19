@@ -1,0 +1,154 @@
+@import "init"
+ 
+prestatario-personal-information
+  +make-col
+  +make-col-span(12)
+
+  @mixin titlulo-nuevo($weight)
+    text-align: center
+    color: $blue-dark
+    margin-top: 1em
+    font-weight: $weight  
+  
+  @mixin upload-img($colMovil, $offsetMovil, $colDesktop, $offsetDesktop,$colTablet)
+    +make-col    
+    +media-breakpoint-down(xs)
+      +make-col-span($colMovil)
+      +make-col-offset($offsetMovil)      
+    +media-breakpoint-up(sm)
+      +make-col-span($colTablet)
+    +media-breakpoint-up(lg)
+      +make-col-span($colDesktop)
+      +make-col-offset($offsetDesktop)
+      color: red
+    
+  @mixin button-option($colOffsetLg)
+    +make-col
+    +make-col-span(6)
+    +media-breakpoint-down(xs)
+      +make-col-span(6)
+    +media-breakpoint-up(lg)
+      +make-col-span(2.5)
+      +make-col-offset($colOffsetLg)    
+
+  .div-button-ooptionuno
+    +button-option(0.5)
+
+  .div-button-ooptionLeft
+    +button-option(3.3)
+
+  .upload-img-container
+    +upload-img(11,0.5,4,0.5,6) 
+
+  .upload-img-circle
+    +make-col
+    +media-breakpoint-down(xs)
+      +make-col-span(11)
+      +make-col-offset(0.5)
+    +media-breakpoint-up(sm)  
+      +make-col-span(6)
+      +make-col-offset(3)
+    +media-breakpoint-up(lg)
+      +make-col-span(4)
+      +make-col-offset(2.5)
+      color: red
+        
+  .titlulo-interno
+    +titlulo-nuevo(normal)
+  
+  .label-margin
+    margin-top: 9px !important
+    
+  .titlulo-principal-interno
+    +titlulo-nuevo(bold)
+  
+  .label-margin-top
+    padding-top: 9px !important
+    
+  .aviso
+    font-size: .7em
+    color: $gray 
+      
+  .help
+    color: $blue-dark !important
+    +media-breakpoint-up(sm)
+      margin-right: 15px
+      margin-top: -10em
+
+  .display-img
+    +media-breakpoint-up(lg)
+      +make-col
+      +make-col-span(10)
+      +make-col-offset(2)    
+ 
+  .div-switch
+    +make-colTasa
+    +make-col-span(6)
+    margin-bottom: 20px
+    margin-top: 20px
+    +media-breakpoint-down(xs)
+      +make-col-span(10)
+      +make-col-offset(1)
+    +media-breakpoint-up(sm)
+      +make-col-span(6)  
+    +media-breakpoint-up(lg)
+      +make-col-span(4.2)
+      +make-col-offset(3.5)
+  
+  .display-button
+    +make-colTasa
+    +media-breakpoint-down(xs)      
+      +make-col-span(12)
+    +media-breakpoint-up(lg)
+      +make-col-span(6)
+  
+  .width-btn-image
+    width: 100%     
+
+  .titulo-clearlyNotice 
+    display: -webkit-inline-box
+    +make-col
+    +media-breakpoint-up(lg)
+      +make-col-span(8)
+      +make-col-offset(2)
+  
+  .div-content-fa-ife
+    +make-col
+    +make-col-span(4)
+    +make-col-offset(8)
+    margin-top: 20px
+    +media-breakpoint-down(xs)
+      +make-col-offset(9.5)
+      display: block 
+    +media-breakpoint-up(lg)
+      +make-col-offset(5.8)
+  
+  .line
+    border: 0
+    border-top: 2px solid $blue-dark
+    height: 0
+    +media-breakpoint-up(lg)
+      +make-col
+      +make-col-span(11.5)
+
+  .content-select
+    +make-col
+    +media-breakpoint-down(xs)      
+      +make-col-span(12)
+    +media-breakpoint-up(sm)
+      +make-col-span(4) 
+  
+  .btn-next
+    float: right
+    +make-col
+    +make-col-span(3)
+    +make-col-offset(9)
+    +media-breakpoint-down(xs)
+      +make-col-span(5)
+      +make-col-offset(7)
+  
+  .margin-bott-select
+    margin-bottom: 2px !important
+  
+  .margin-bottom-form
+    margin-bottom: 15px !important

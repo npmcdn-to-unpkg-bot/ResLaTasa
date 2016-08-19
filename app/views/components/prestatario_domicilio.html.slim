@@ -1,0 +1,86 @@
+.tasa-div-form
+  .section-header 
+    | {{'prestatario.datosPersonales.formulario.titulo' | i18n}}
+  .section-body   
+    form [ngFormModel]='domicilioForm' (submit)='saveDomicilio()'
+      .cuerpo.container-fluid
+        .tasa-from
+          .col-lg-6.container 
+            .tasa-input
+              label for='calle'  {{'prestatario.datosPersonales.formulario.calle' | i18n}}
+              br
+              input ngControl='calle' id='calle' placeholder="{{'prestatario.datosPersonales.formulario.calle' | i18n}}" [(ngModel)]='model.calle' 
+              control-messages control='calle' 
+              
+            div 
+              .tasa-input.top-sec
+                label for='numero' {{'prestatario.datosPersonales.formulario.numero' | i18n}}
+                br
+                div.row ngControlGroup='numeros'
+                  div.col-lg-6.col-xs-6
+                    label for="exterior" [hidden]="true"            
+                    input id='exterior' placeholder="{{'prestatario.datosPersonales.formulario.exteriorPH' | i18n}}" ngControl="numeros.exterior" [(ngModel)]='model.numeroext' 
+                      
+                  div.col-lg-6.col-xs-6
+                    label for="interior" [hidden]="true"
+                    input id='interior' placeholder="{{'prestatario.datosPersonales.formulario.interiorPH' | i18n}}" ngControl="numeros.interior"  [(ngModel)]='model.numeroint'
+                  control-messages control='numeros.interior'
+                  control-messages control='numeros.exterior'   
+            .tasa-input.top
+              label for='codigoPostal'  {{'prestatario.datosPersonales.formulario.codigoPostal' | i18n}}
+              br
+              input ngControl='codigoPostal'  id='codigoPostal' (blur)='getDataZipCode($event)' placeholder="{{'prestatario.datosPersonales.formulario.codigoPostal' | i18n}}" [(ngModel)]="model.codigo_postal"
+              control-messages control='codigoPostal'            
+          .col-lg-6.container-fluid
+            .tasa-input
+              label for='estado' {{'prestatario.datosPersonales.formulario.estado' | i18n}}
+              .tasa-select 
+                select.option-deafult  [ngClass]="{'selectedOption'  : model.id_estado!=''}" ngControl='estado' [(ngModel)]="model.id_estado" #estado="ngForm"  class="form" (change)="getDataState($event)"
+                    option value="" Selecionar
+                    option template="ngFor let stat of state" [value]="stat.id_estado"{{stat.estado}}            
+                control-messages control='estado'
+            <div class="textErrors" *ngIf="errorMessageState">
+            |{{errorMessageState}}
+            </div>
+            .tasa-input                   
+              label for='ciudad' {{'prestatario.datosPersonales.formulario.ciudad' | i18n}}
+              .tasa-select         
+                select.option-deafult  [ngClass]="{'selectedOption': model.ciudad!=''}" [(ngModel)]="model.ciudad" 
+                  option value="" Selecionar        
+                  option template="ngFor let city of cities" [value]="city.id_ciudad" {{city.ciudad}}         
+            .tasa-input 
+              label.t-s for="delegacion" {{'prestatario.datosPersonales.formulario.delegacionMunicipio' | i18n}}
+              .tasa-select 
+                select.option-deafult [ngClass]="{'selectedOption': model.delegacion_municipio!=''}" ngControl='delegacion' [disabled]='disabledLabel' #delegacion="ngForm" [(ngModel)]="model.delegacion_municipio" (change)="getDataColony($event)"
+                  option value="" Selecionar
+                  option template="ngFor let delegation of delegations" [value]="delegation.id_municipio" {{delegation.municipio}}
+              control-messages control="delegacion"
+            <div class="textErrors" *ngIf="errorMessageDelegations">
+            |{{errorMessageDelegations}}
+            </div>              
+            .tasa-input                      
+              label for="colonia" {{'prestatario.datosPersonales.formulario.colonia' | i18n}}
+              .tasa-select  
+                select.option-deafult  [ngClass]="{'selectedOption': model.colonia!=''}" ngControl="colonia" #colonia="ngForm" [(ngModel)]="model.colonia" (change)= "getZipCodeByColony($event)"
+                  option value="" Selecionar
+                  option template="ngFor let colony of colonies" [value]="colony.id_colonia" {{colony.colonia}}
+              control-messages control="colonia"           
+              br
+              br        
+  div 
+    div
+      button.btn-back.waves-effect.waves-button.waves-float.waves-dark (click)='back()'
+        div
+          i.fa.fa-angle-left
+          span.button-text-icon  {{'prestatario.datosPersonales.previus' | i18n}}
+    div
+      button.btn-next-sec.btn-next.waves-effect.waves-button.waves-float.waves-light.bn type='submit' (click)="saveDomicilio()" [disabled]='!domicilioForm.valid'
+        div
+          span.button-text-icon  {{'prestatario.datosPersonales.next' | i18n}}  
+          i.fa.fa-angle-right         
+
+<div [hidden]= "!closeLoading">
+  tasa-loading [closeLoadingBoolean]="closeLoading"
+</div>            
+
+

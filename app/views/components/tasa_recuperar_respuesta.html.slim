@@ -1,0 +1,27 @@
+.foo
+  .container-fluid.div-form
+    .cabeceros.container-fluid
+      div.logo
+        img  src="images/logo.svg"    
+      div.text
+        h1.blue
+          strong 
+            | {{ 'login_tasa.titulo_recupera_contraseña' | i18n }}
+        br    
+    .cuerpos.container-fluid
+        .tasa-
+         br
+         h6.green {{ 'login_tasa.respuestaEnvioCorreo' | i18n }}
+         br
+        div.button-centrar
+             button.btn-next.waves-effect.waves-button.waves-float.waves-light (click)="back()" [disabled]='disabledLabel'
+              div
+                i.fa.fa-angle-left style="margin-right: 3px"
+                span.button-text-icon {{ 'login_tasa.inicioSession' | i18n }}
+    br            
+    p id='sugerencia'  {{ 'login_tasa.formulario.sugerencia' | i18n }}
+    div.text style="text-align:center"
+      strong
+        a style="margin-right:3px" {{ 'login_tasa.formulario.invertir' | i18n }} 
+        ||
+        a href="{{prestatarioUrl}}" style="margin-left:3px" {{ 'login_tasa.formulario.credito' | i18n }}

@@ -1,0 +1,74 @@
+@import "tasa"
+
+prestatario-domicilio
+  
+ input:not([type=checkbox])
+  +make-col-span(12)
+
+ button.btn-back
+  width: 12% !important
+  float: left !important
+  +media-breakpoint-between(xs,md)
+   width: 12% !important
+   margin-left: 30px !important
+  +media-breakpoint-down(xs)
+   width: 40% !important
+   margin-left: 0px !important
+
+ .option-deafult
+  margin-bottom: 0px !important
+
+ .top
+  margin-top: 0px !important
+
+ .top-sec  
+  margin-top: 5px !important
+
+ .t-s
+  margin-top: 17px !important
+
+ button.btn-next-sec
+  width: 25% !important
+  float: right !important
+  +media-breakpoint-between(xs,md)
+   width: 25% !important
+   margin-right: 30px !important
+  +media-breakpoint-down(xs)
+   width: 40% !important
+   margin-right: 0px !important
+  
+ hr
+  height: 1px
+  background-color: #00548b
+
+ .selectColorActive
+  color: black !important
+
+ .selectColorInactive
+  color: gray
+
+ .disabled
+  color: gray
+
+  select.option-deafult
+   margin-bottom: 0px !important
+   background: transparent
+   border: none
+   font-size: 14px
+   height: 30px
+   padding: 4px
+   width: 100%
+
+  select:focus
+   outline: none
+
+  .textError
+   padding-left: 15px
+   color: #f72136
+   font-size: 0.8em
+
+  .textErrors
+   color: #f72136
+   font-size: 0.8em
+
+  

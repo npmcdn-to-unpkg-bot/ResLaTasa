@@ -1,0 +1,30 @@
+.container-fluid.tasa-div-form
+  .cuerpo.container-fluid
+    .text-center
+      img.img-fluid.center-block src="/images/tasa_aviso_animado/woohoo.png"
+      h2.black-ligth style="text-align:center"
+        | {{'prestatario.cuentaCreada.tituloAnimacion' | i18n}}
+      br
+      div.row.container-fluid
+        div.col-sm-2  
+        div
+          div.row.container-fluid
+            p.gray-dark.text-center style="margin-right:25px !important; margin-left:10px !important"
+              | {{'prestatario.cuentaCreada.mensaje0' | i18n}}
+        div.col-sm-2  
+        div
+          div.row.container-fluid style="display:-webkit-inline-box"
+            i.a3.blue.fa.fa-check
+            p.gray-dark style="margin-right:25px !important"
+              | {{'prestatario.cuentaCreada.mensaje1' | i18n}}
+        div.col-sm-2  
+        div
+          div.row.container-fluid.col-md-10 style="display:-webkit-inline-box"
+            i.a3.blue.fa.fa-check
+            p.gray-dark style="margin-right:30px !important"
+              | {{'prestatario.cuentaCreada.mensaje2' | i18n}}
+    br
+    div.button-centrar
+      button.btn-next.waves-effect.waves-button.waves-float.waves-light.col-lg-3 (click) = 'next()'
+          div
+          span.button-text-icon {{'prestatario.cuentaCreada.botonmensaje' | i18n}}

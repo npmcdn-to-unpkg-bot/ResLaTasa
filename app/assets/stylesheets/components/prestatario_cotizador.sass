@@ -1,0 +1,321 @@
+@import "tasa"
+
+prestatario-cotizador
+  
+  +make-col
+  +make-col-span(12)
+
+  .noRadioButton
+    height: 40px
+
+  .mnj-obtcredito
+    text-align: center
+    background: $gray-light
+    float: inherit
+    +media-breakpoint-down(xs)
+      margin-right: -30px
+      margin-left: -30px
+
+  .foot
+    position: relative
+    overflow: hidden
+    color: gray
+    margin-top: 10px
+
+  .padding-top.ocultos
+    padding-top: 10px
+
+  .spacediv-top-down
+    +media-breakpoint-up(lg)
+      margin-top: 30px
+      margin-bottom: 30px
+       
+  .spacediv_slider-top
+    margin-top: 12%  
+
+  .text-div
+    color: $blue-dark
+    height: 100%
+
+  .text-div-foot
+    color: $gray-dark
+    font-weight: bold
+    +media-breakpoint-down(xs)
+      font-size: 0.625rem
+  
+  .text-div-list
+    color: $gray-dark
+
+  .text-table
+    color: #888888
+    +media-breakpoint-down(xs)
+      font-size: .75rem
+
+  table
+    width: 100%
+
+  th, td
+    text-align: center
+    width: 50%
+    padding-bottom: 10px
+
+  .text-debt-inactive
+    color: gray !important
+    border-color: $gray-light !important
+    background-color: transparent
+
+  .text-debt-active
+    color: $blue-dark  
+
+  .padding-top-image
+    padding-top: 10px
+    margin-top: 10px
+
+  .backgroud-column
+    background-color: $blue-light
+    color: $blue
+    border: 1px solid $blue-light
+
+  .border-column
+    border-color: $blue-light
+    border: $blue-light 1px solid
+
+  .space-montos
+    padding-top: 20px
+    margin-top: 20px
+    margin-bottom: 20px
+    +media-breakpoint-down(xs)
+      padding-top: 10px
+      margin-top: 10px
+
+  .overflow-element
+    overflow: hidden    
+
+  .img-top-foot
+    margin-top: 20px
+
+  .button-group-center
+    text-align: center
+
+  .txt-havedebts
+    text-align: center    
+    +media-breakpoint-up(lg)
+      text-align: left
+      float: right
+
+  .style-tablet-btn-radio
+    +media-breakpoint-down(xs)
+      width: 80%
+      text-align: -webkit-center
+      margin-top: -15px
+    +media-breakpoint-up(sm)
+      margin-bottom: 20px
+      text-align: -webkit-center 
+      width: 70%
+    +media-breakpoint-up(lg)
+      text-align: left
+      width: 30%
+      margin: 0px
+      padding: 0px
+
+  .style-tablet-input-monto
+    +make-col
+    +make-col-span(5)
+    +media-breakpoint-between(xs,md)
+      +make-col-span(12)
+    +media-breakpoint-up(lg)
+      +make-col-span(5)
+
+  .style-button-group
+    +media-breakpoint-down(xs)
+      margin-bottom: 15px
+    +media-breakpoint-up(sm)
+      width: 70%
+      margin-bottom: 15px
+    +media-breakpoint-up(lg)
+      padding: 0px
+      margin: 0px
+
+  @media (max-width: 768px)
+    .style-tablet-input-monto
+      width: 100% !important
+      font-size: 90%
+      +media-breakpoint-down(xs)
+        width: 100% !important
+
+  .divtablefooter
+    margin-top: -20px !important
+
+  .widthbtonimg
+    width: 100%
+
+  .button-text-icon
+    +media-breakpoint-down (lg)
+      font-size: 12px
+
+  .section-header-cotizador
+    margin-top: 21px
+  
+  .button-center
+    float: center !important
+    text-align: center !important
+    width: 100%
+  
+  .button-principal
+    +make-col
+    +make-col-span(5)
+    +make-col-offset(3.5)
+    +media-breakpoint-down(xs)
+      +make-col
+      +make-col-span(11)  
+      +make-col-offset(0.5) 
+  
+  .btn-next
+    float: none
+  
+  .title-register-minutes
+    width: 100% !important
+    word-wrap: inherit
+    text-align: -webkit-center
+    display: -webkit-box
+  
+  .aplica-div
+    +media-breakpoint-up(xs)
+      padding-bottom: 15px
+    +media-breakpoint-up(lg)
+      padding-bottom: 0px
+
+  .text-minutes
+    +make-colTasa
+    +make-col-span(8)
+    +make-col-offset(2)
+    color: $gray-dark
+    font-family: Open Sans
+    font-size: 24px
+    padding-bottom: 15px
+    +media-breakpoint-between(xs,sm)
+      margin: 0px
+      font-size: 16px
+      +make-col
+      +make-col-span(8)
+      +make-col-offset(2)
+    +media-breakpoint-up(md)
+      font-size: 24px
+    
+   
+  .text-center 
+    text-align: center
+    margin-bottom: 0px
+    font-size: 1rem
+
+  .line
+    border: 0
+    border-top: 1px solid $blue-dark
+    border-bottom: 1px solid $blue-dark
+    height: 0
+  
+  .color-tick
+    color: $blue
+  
+  .button-foot
+    text-align: -webkit-center
+  
+  .button-step01
+    width: 70%
+  
+  .foot-option
+    text-align: left
+  
+  .td-top
+    padding-top: 10px  
+              
+  .column-img 
+    +make-colTasa
+    +make-col-span(12)
+    +media-breakpoint-up(lg)
+      +make-col-span(5)
+      padding-left: 15px !important
+  
+  .hidden-img 
+    display: block
+    +media-breakpoint-between(xs, md)
+      display: none
+  
+  .display-business
+    display: none
+    +media-breakpoint-between(sm,md)
+      display: block
+
+  .display-business-desktop
+    +make-col
+    +make-col-span(6)
+    +media-breakpoint-up(sm)//tablet
+      +make-col-span(4)
+      display: none
+    +media-breakpoint-up(lg)//desktop
+      +make-col-span(6)
+      display: block
+
+  .imagen-btn-cotizador
+    +imagenBtn
+    +make-colTasa
+    width: 100%
+  
+  .content-plazo
+    +make-colTasa
+    +make-col-span(12)
+    +media-breakpoint-up(lg)
+      +make-col
+      +make-col-span(7)
+  
+  .display-slider
+    display: block
+    +media-breakpoint-between(xs,md)
+      display: none
+
+  .display-input-cotizacion
+    display: none
+    +media-breakpoint-between(xs,md)
+      display: block
+
+  .conten-img
+    +make-col
+    +make-col-span(6)
+    +media-breakpoint-up(sm)//tablet
+      +make-col-span(4)
+    +media-breakpoint-up(lg)//desktop
+      +make-col-span(6)
+
+  .div-tasas
+    padding-top: 1em
+    display: table
+    width: 100%
+    +media-breakpoint-up(lg)//desktop
+      padding-top: 1.5em
+
+  .div-switch
+    +make-colTasa
+    +make-col-span(8)
+    +make-col-offset(2)
+    +media-breakpoint-up(sm)
+      +make-col-offset(3)
+      +make-col-span(6)
+    +media-breakpoint-up(lg)
+      +make-col-offset(0)
+      +make-col-span(12)
+
+  .switch-btns-cotizador
+    +switchBtns
+    padding: 0px !important
+
+  .superscript
+    color: #888888
+    font-size: 12px
+    font-weight: bold
+
+  .margin-bott-select
+    margin-bottom: 2px !important
+
+  .margin-bottom-input
+    margin-bottom: 15px !important
+

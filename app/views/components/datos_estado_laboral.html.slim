@@ -1,0 +1,185 @@
+.tasa-div-form
+  .section-header {{ 'prestatario.estadolaboral.titulo' | i18n }}
+  .section-body
+    .container-fluid
+      .tasa-from
+        br
+        h6.blue-dark {{ 'prestatario.estadolaboral.pregunta' | i18n }}
+      div.catalogoestados
+        .imagen-btn
+          .imagen-puesto
+            img src="{{puestoFinal == 'empleado' ? '/images/empleadoOn-01.svg' : '/images/empleadoOff-01.svg'}}"
+          div.radio-group  
+            button.btn-image.waves-effect.waves-button.waves-float.waves-light.btnOptions [ngClass]="{'active': puestoFinal === 'empleado'}" (click)="changeOcupation('empleado')"
+              div
+                span.button-text-icon {{ 'prestatario.estadolaboral.empleado' | i18n }}
+        .imagen-btn
+          .imagen-puesto
+            img src="{{puestoFinal == 'empresario' ? '/images/empresarioOn-01.svg' : '/images/empresarioOff-01.svg'}}"
+          div.radio-group
+            button.btn-image.waves-effect.waves-button.waves-float.waves-light.btnOptions.empresario [ngClass]="{'active': puestoFinal === 'empresario'}" (click)="changeOcupation('empresario')"
+              div
+                span.button-text-icon [innerHTML] = "'prestatario.estadolaboral.empresario' | i18n"
+        .imagen-btn
+          .imagen-puesto
+            img src="{{puestoFinal == 'otro' ? '/images/otroOn-01.svg' : '/images/otroOff-01.svg'}}"
+          div.radio-group
+            button.btn-image.waves-effect.waves-button.waves-float.waves-light.btnOptions [ngClass]="{'active': puestoFinal === 'otro'}" (click)="changeOcupation('otro')"
+              div
+                span.button-text-icon {{ 'prestatario.estadolaboral.otro' | i18n }}
+    br
+    form [ngFormModel]='datosLaboralesForm' 
+      .tasa-from template="ngIf puestoFinal === 'empleado'"
+        .col-lg-6.container-fluid
+          .tasa-input
+            label for='sector' {{'prestatario.estadolaboral.datoslaborales.sector' | i18n}}
+            br
+            .tasa-select
+              select.option-deafult id="sector" ngControl='sector' [(ngModel)]='modelDatosLaborales.sector' [ngClass]="{'selectedOption':modelDatosLaborales.sector!=''}"
+                option value=''  = 'Seleccionar'
+                option template="ngFor let sect of sector" [value]="sect.sector" {{sect.sector}}
+            control-messages control='sector'
+          .tasa-input
+            label for='tipocontra' {{'prestatario.estadolaboral.datoslaborales.tipo_contracion' | i18n}}
+            br
+            .tasa-select
+              select.option-deafult id='tipocontra' ngControl='tipocontra' [(ngModel)]='modelDatosLaborales.tipo_contratacion' [ngClass]="{'selectedOption':modelDatosLaborales.tipo_contratacion!=''}"
+                option value='' = 'Seleccionar'
+                option template="ngFor let tipoContratacion of tipoContrataciones" [value]="tipoContratacion.contratacion" {{tipoContratacion.contratacion}}
+            control-messages control='tipocontra'
+          .tasa-input
+            label for='actividadprofe' {{'prestatario.estadolaboral.datoslaborales.actividad_profe' | i18n}}
+            br
+            input id='actividadprofe' [(ngModel)]='modelDatosLaborales.actividad_profesional' ngControl='actividadprofe' placeholder = "{{'prestatario.estadolaboral.datoslaborales.puesto_empresa' | i18n}}"
+            control-messages control='actividadprofe'
+        .col-lg-6.container-fluid
+          .tasa-input
+            label for='aniosempleo'  {{'prestatario.estadolaboral.datoslaborales.años_empleo' | i18n}}
+            br
+            input id='aniosempleo' [(ngModel)]='modelDatosLaborales.tiempo_empleo_actual' ngControl='aniosempleo'  placeholder = "{{'prestatario.estadolaboral.datoslaborales.num_años' | i18n}}"
+            control-messages control='aniosempleo'
+          .tasa-input
+            label for='nivelEstudio'  {{'prestatario.estadolaboral.datoslaborales.nivel_estudios' | i18n}}
+            br
+            .tasa-select
+              select.option-deafult id='nivelEstudio' ngControl='nivelEstudio' [(ngModel)]='modelDatosLaborales.nivelestudios' [ngClass]="{'selectedOption':modelDatosLaborales.nivelestudios!=''}"
+                option value='' = 'Seleccionar'
+                option template="ngFor let nivelEstudio of nivelEstudio" [value]="nivelEstudio.nivel" {{nivelEstudio.nivel}}
+            control-messages control='nivelEstudio'
+      .tasa-from  template="ngIf puestoFinal === 'empresario'"
+        .col-lg-6.container-fluid
+          .tasa-input
+            label for='actividadProfeEmpresario'  {{ 'prestatario.estadolaboral.datosempresario.actividad_profe_em' | i18n }}
+            .tasa-select
+              select.option-deafult id='actividadProfeEmpresario' ngControl='actividadProfeEmpresario' [(ngModel)]='modelDatosLaborales.actividad_profesional'  [ngClass]="{'selectedOption':modelDatosLaborales.actividad_profesional!=''}"
+                option value='' = 'Seleccionar'
+                option template="ngFor let actiProfesional of actividadProfesionales" [value]="actiProfesional.actividad" {{actiProfesional.actividad}}
+            control-messages control='actividadProfeEmpresario'
+          .tasa-input
+            label for='aniosActiEmpre'  {{ 'prestatario.estadolaboral.datosempresario.anios_actividad' | i18n }}
+            input [(ngModel)]='modelDatosLaborales.tiempo_actividad' ngControl='aniosActiEmpre' id='aniosActiEmpre' placeholder = "{{ 'prestatario.estadolaboral.datosempresario.numeroAnios' | i18n }}"
+            control-messages control='aniosActiEmpre'
+        .col-lg-6.container-fluid
+          .tasa-input
+            label for='nivelEstudio'  {{ 'prestatario.estadolaboral.datoslaborales.nivel_estudios' | i18n }}
+            .tasa-select
+              select.option-deafult id='nivelEstudio' ngControl='nivelEstudio' [(ngModel)]='modelDatosLaborales.nivelestudios' [ngClass]="{'selectedOption':modelDatosLaborales.nivelestudios!=''}"
+                option value='' = 'Seleccionar'
+                option template="ngFor let nivelEstudio of nivelEstudio" [value]="nivelEstudio.nivel" {{nivelEstudio.nivel}}
+            control-messages control='nivelEstudio'
+          .tasa-input
+            label for='gastoMensual' {{ 'prestatario.estadolaboral.datosempresario.gasto_mensuales' | i18n }}
+            .tasa-select
+              select.option-deafult id='gastoMensual' ngControl='gastoMensual' [(ngModel)]='modelDatosLaborales.gastos_mensuales' [ngClass]="{'selectedOption':modelDatosLaborales.gastos_mensuales!=''}"
+                option value='' = 'Seleccionar'
+                option template="ngFor let gastoMensual of gastosMensuales" [value]="gastoMensual.gastos" {{gastoMensual.gastos}}
+            control-messages control='gastoMensual'       
+      
+      .tasa-from template="ngIf puestoFinal === 'otro'"
+        .col-lg-6.container-fluid
+          .tasa-input
+            label for='recibesIngresos' {{ 'prestatario.estadolaboral.datosotro.recibesingresos' | i18n }}
+            input ngControl='recibesIngresos' id='recibesIngresos' placeholder = "{{ 'prestatario.estadolaboral.datosotro.holderingresos' | i18n }}" [(ngModel)]='modelDatosLaborales.como_recibes_ingresos'
+            control-messages control='recibesIngresos'
+        .col-lg-6.container-fluid
+          .tasa-input
+            label for='nivelEstudio' {{ 'prestatario.estadolaboral.datoslaborales.nivel_estudios' | i18n }}
+            .tasa-select
+              select.option-deafult id='nivelEstudio' ngControl='nivelEstudio' [(ngModel)]='modelDatosLaborales.nivelestudios' [ngClass]="{'selectedOption':modelDatosLaborales.nivelestudios!=''}"
+                option value='' = 'Seleccionar'
+                option template="ngFor let nivelEstudio of nivelEstudio" [value]="nivelEstudio.nivel" {{nivelEstudio.nivel}}
+            control-messages control='nivelEstudio'
+      .col-xs-12.with-padding-top.with-padding-bottom
+        hr
+      .tasa-from
+        h6.blue-dark
+          strong {{ 'prestatario.estadolaboral.datoslaborales.ingresocompro' | i18n }}
+        br
+        br
+        .container-fluid.ingresolibre
+          .tasa-input
+            input type="text" [(ngModel)]='modelDatosLaborales.ingreso_mensual_libre' ngControl='ingreso' id='ingreso' placeholder = "{{ 'prestatario.estadolaboral.datoslaborales.ingresomennum' | i18n }}" (blur) = "setCurrency($event)"
+            control-messages control='ingreso'
+      .tasa-from
+        br
+        h6.blue-dark {{ 'prestatario.estadolaboral.datoslaborales.comocomprobarias' | i18n }}
+        .imagen-btn.with-padding-bottom
+          br
+          .col-xs-6.clave
+            button.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': como_compruebas === 1}" (click)="comoCompruebas(1)"
+              div 
+                span.button-text-icon {{ 'prestatario.estadolaboral.datoslaborales.ciec' | i18n }}
+          .col-xs-6.comprobantes      
+            button.btn-image.waves-effect.waves-button.waves-float.waves-light.col-lg-6 [ngClass]="{'active': como_compruebas === 2}" (click)="comoCompruebas(2)"
+              div 
+                span.button-text-icon {{ 'prestatario.estadolaboral.datoslaborales.comprobanteS' | i18n }}
+      div id="divCompro" template="ngIf como_compruebas === 2"              
+        .tasa-from
+            br
+            p.container-fluid.blue-dark {{ 'prestatario.estadolaboral.datoslaborales.comprobante' | i18n }}
+        .tasa-from
+            p.gray-light.col-lg-8.col-lg-offset-2 id='instrucciones' {{ 'prestatario.estadolaboral.datoslaborales.instrucciones' | i18n }} 
+        .tasa-from
+          .container-fluid.alineaCheck
+            .checkbox
+              input type="checkbox" id="cb" [(ngModel)]='modelDatosLaborales.subir_despues' (change)="subirDespuesDocumentos($event.target)" 
+              label for="cb"
+              a Subir después
+          comprobante-ingresos (validaComprobante)="validaComprobante($event)" (eliminaElemento)="eliminaElemento($event)" [estadolaboral]="puestoFinal" [username] = "username" template="ngFor let item of itemsTipoComprobante"
+
+        .tasa-from
+          br
+          .imagen-btn.with-padding-bottom.with-padding-top
+            .col-md-6
+              button.btn-image.waves-effect.waves-button.waves-float.waves-light.btnComponents (click)="addElement()"
+                div 
+                  span.button-text-icon {{ 'prestatario.estadolaboral.agregar' | i18n }}
+            .col-md-6      
+              button.btn-next.waves-effect.waves-button.waves-float.waves-light.btnEnviar.col-lg-8 [disabled]='(!datosLaboralesForm.valid || !isValidForm)' (click)='saveDatosLaborales(modelDatosLaborales)'
+                div 
+                  span.button-text-icon {{ 'prestatario.estadolaboral.next' | i18n }}
+        br
+        br
+        br
+      div template="ngIf como_compruebas === 1"
+        .container-fluid.tasa-from
+          .tasa-input.clave_ciec
+            input type="password" [(ngModel)]='modelDatosLaborales.clave_ciec' ngControl='clave_ciec' id='clave_ciec' placeholder = "{{ 'prestatario.estadolaboral.datoslaborales.clave_ciec' | i18n }}"
+            control-messages control='clave_ciec'
+        .tasa-from
+          br
+          button.btn-next.waves-effect.waves-button.waves-float.waves-light.btnEnviarCIEC [disabled]='(!datosLaboralesForm.valid || !isValidForm)' (click)='saveDatosLaborales(modelDatosLaborales)'
+            div 
+              span.button-text-icon {{ 'prestatario.estadolaboral.next' | i18n }}      
+          br
+          br    
+.tasa-div-form
+  .imagen-btn.without-padding
+    button.btn-back.waves-effect.waves-button.waves-float.waves-dark.atras (click)="back()"
+      div
+        i.fa.fa-angle-left 
+        span.button-text-icon {{ 'prestatario.estadolaboral.atras' | i18n }}
+
+<div [hidden]= "!closeLoading">
+  tasa-loading [closeLoadingBoolean]="closeLoading"
+</div>      

@@ -1,0 +1,17 @@
+.col-lg-6.col-lg-offset-3
+  .tasa-input 
+    label for='tipocompo' {{'prestatario.estadolaboral.datoslaborales.tipocompro' | i18n }} 
+    .tasa-select 
+      select.option-deafult id='tipocompo' [(ngModel)]='comprobante.id' [ngClass]="{'selectedOption': comprobante.id != ''}" (change)="getComprobante($event)" 
+        option value=''  = 'Seleccionar'
+        option template="ngFor let tipo_comprobante of tipo_comprobantes"  [value]="tipo_comprobante.comprobante" {{tipo_comprobante.comprobante}}
+      <div class="error-message"*ngIf="errorMessage !== null">{{errorMessage}}</div> 
+  .tasa-input 
+    .container id="imagenIngreso" 
+      br 
+      upload-images (imageSelected)="imageSelected($event)" [parameters]= 'parametrosComprobante' 
+  .tasa-input 
+    .imagen-btn 
+      button.btn-image.waves-effect.waves-button.waves-float.waves-light.col-xs-6.col-xs-offset-3 (click)="removeElement()" [disabled]='!eliminar' 
+        div  
+          span.button-text-icon{{'prestatario.estadolaboral.eliminar' | i18n }}

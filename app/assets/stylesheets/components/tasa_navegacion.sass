@@ -1,0 +1,109 @@
+@import "tasa"
+tasa-navegaion
+ul.avances
+  list-style: none
+  padding: 0
+  li
+    background: $gray-light
+    color: $gray-dark
+    display: inline-block
+    font-size: 16px
+    height: 32px
+    line-height: 32px
+    padding: 0px
+    position: relative
+    margin: 0.4rem
+    text-align: center
+    width: 22px
+    &:before
+      content: ""
+      width: 1px
+      height: 1px
+      background: transparent
+      position: absolute
+      top: 0
+      left: -8px
+      border: 10px solid transparent
+      border-width: 16px 8px 16px 8px
+      border-top-color: $gray-light
+      border-bottom-color: $gray-light
+      
+    &:after
+      content: ""
+      width: 1px
+      height: 1px
+      background: transparent
+      position: absolute
+      top: 0
+      right: -16px
+      border: 10px solid transparent
+      border-width: 16px 8px 16px 8px
+      border-left-color: $gray-light
+      
+    .texto, span
+      display: none
+    &.active
+      background: $orange
+      color: #fff
+      &:before
+        border-top-color: $orange
+        border-bottom-color: $orange
+      &:after
+        border-left-color: $orange
+    &.otro
+      background: $gray-dark
+      color: $gray-light
+      padding: 0rem 0.5rem
+      width: 32px
+      text-align: center
+      margin: 0.5rem 0.3rem
+      border-radius: 0.2rem
+      &:before, &:after
+        border: 0 !important
+      &.active
+        background: $brand-success
+        color: #fff
+        &:before, &:after
+          border: 0 !important
+
+@media screen and (min-width: 600px)
+  ul.avances li
+    height: 40px
+    line-height: 40px
+    margin: 0 2rem
+    padding: 0 0px 0 5px
+    &:before
+      border: 20px solid transparent
+      border-width: 20px 13px 20px 13px
+      border-top-color: $gray-light
+      border-bottom-color: $gray-light
+      left: -13px
+    &:after
+      border: 20px solid transparent
+      border-width: 20px 13px 20px 13px
+      border-left-color: $gray-light
+      right: -26px
+    &.otro
+      width: 40px
+
+@media screen and (min-width: 1024px)
+  ul.avances li
+    margin: 0 1rem
+    width: auto
+    &:before
+      border-width: 19.5px 13px 20px 13px
+    &:after
+      border-width: 19.5px 13px 20px 13px
+      right: -27px
+    &.otro
+      width: 40px
+    &:not(.otro)
+      min-width: 8.4rem
+      box-sizing: content-box
+      .texto
+        display: block
+        font-size: 10pt
+        font-weight: 600
+      i
+        display: block
+        float: left

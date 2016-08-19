@@ -1,0 +1,54 @@
+@import "tasa"
+//aviso_animado_privacy
+aviso_animado_cuenta
+  +make-col
+  +make-col-span(12)
+  +addTopSpace
+        
+  .cuerpo
+    border: 3px solid $green
+    border-radius: 5px
+    padding-bottom: 15px
+    
+  h1
+    color: black !important
+    font-size: 2em !important
+    +media-breakpoint-down(xs)
+      font-size: 1em !important
+  
+  .boton-cuenta
+    //left: 40%
+    width: 24%
+    +media-breakpoint-down(xs)
+      //width: 70%
+      left: 15%
+
+  //button
+    //+make-col-span(3)
+    //+make-col-offset(4)
+
+  .button-centrar
+    +make-col
+    +make-col-span(12)
+    padding: 3em 0 1em 0
+    text-align: center !important
+  .btn-next
+    float: none !important  
+    +media-breakpoint-down(sm)
+      +make-col-span(10)
+    +media-breakpoint-up(md)  
+      +make-col-span(6)
+    +media-breakpoint-up(lg)
+      +make-col-span(4)  
+  
+
+  .a3
+    margin-right: 7px !important
+    margin-left: 7px !important
+
+  @media (min-width: 768px) and (max-width: 900px)
+    .boton-cuenta
+      //width: 40%
+      // left: 31%
+    .col-sm-2
+      width: 8.3334%  

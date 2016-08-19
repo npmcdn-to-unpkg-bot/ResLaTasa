@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="background-tasa">
+
+<head>
+  <script>document.write('<base href="' + document.location + '" />');
+  </script>
+  <title>Latasa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+  <div class="tasa-app">
+    <div class="div-principal col-sm-md-12 col-lg-10 col-lg-offset-1">
+      <%= yield %>
+    </div>
+  </div>
+
+    <%= javascript_include_tag 'application' %>
+    <!-- IE required polyfills (from CDN), in this exact order -->
+    <script src="javascript/dependencias/shim.min.js"></script>
+    <script src="javascript/dependencias/zone.min.js"></script>
+    <script src="javascript/dependencias/Reflect.js"></script>
+    <script src="javascript/dependencias/system.src.js"></script>
+
+      <!-- 2. Configure SystemJS -->
+      <script src="/javascript/system.config.js"></script>
+      <script>
+        System.import('tasa/demo_main.js').catch(function(err){ console.error(err);  });
+      </script>
+</body>
+
+</html>

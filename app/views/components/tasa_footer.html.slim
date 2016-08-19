@@ -1,0 +1,12 @@
+div
+  .logo
+    img src="/images/norton.ico"
+.text
+  p.text-footer
+    | {{ 'footer.avisoPrivacy1' | i18n }}
+    <br>
+    | {{ 'footer.avisoPrivacy2' | i18n }}
+    a.text-footer (click) = 'showModal()' 
+      | {{ 'footer.linkAvisoPrivacy' | i18n }}
+
+aviso-privacy

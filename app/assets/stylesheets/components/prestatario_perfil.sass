@@ -1,0 +1,38 @@
+@import "tasa"
+
+prestatario-perfil
+  +make-col
+  +make-col-span(12)
+  
+  /**/
+  //input:not([type=checkbox])
+  //  +make-col
+  //  +make-col-span(12)
+  
+
+  .checkbox 
+    margin-top: 35px
+    padding-top: 15px
+    +media-breakpoint-down(sm)
+      font-size: 1em !important
+  .checkbox a
+    +media-breakpoint-down(sm)
+      font-size: .643rem !important
+       
+  .button-centrar
+    +make-col
+    +make-col-span(12)
+    padding: 3em 0 1em 0
+    text-align: center !important
+  .btn-next
+    float: none !important  
+    +media-breakpoint-down(sm)
+      +make-col-span(10)
+    +media-breakpoint-up(md)  
+      +make-col-span(6)
+    +media-breakpoint-up(lg)
+      +make-col-span(4)  
+      //  font-size: .5em
+  //  padding-left: 0 !important
+  //  padding-right: 0 !important
+  //  text-align: left !important

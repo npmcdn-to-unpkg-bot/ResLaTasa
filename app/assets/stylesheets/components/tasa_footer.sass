@@ -1,0 +1,35 @@
+@import "tasa"
+
+tasa-footer
+  min-height: $footer-height
+  max-height: $footer-height
+  background: transparent
+  .logo
+    +make-col
+    +make-col-span(4)
+    min-height: $footer-height
+    max-height: $footer-height
+    background: transparent
+    +media-breakpoint-up(sm)
+      +make-col-span(2)
+      +make-col-offset(1)
+    
+    img
+      margin-top: 1em
+
+  .text
+    +make-col
+    +make-col-span(8)
+    min-height: $footer-height
+    max-height: $footer-height
+    background: transparent
+    
+    p
+      margin-top: 2em
+      background: transparent
+      +media-breakpoint-up(lg)
+        margin-top: 3em
+
+    a
+      cursor: pointer
+    

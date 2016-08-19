@@ -1,0 +1,79 @@
+@import "tasa"
+
+aviso-privacy
+  .modal-body
+    background: white
+      
+  .modal-return
+    margin-top: 50px
+    margin-bottom: 10px
+    color: white
+
+  .modal-content-body
+    font-size: 0.875rem
+    text-align: justify
+    +media-breakpoint-down(xs)
+    font-size: 0.875rem
+
+  .modal-text-aviso
+    +media-breakpoint-down(xs)
+    font-size: .75rem
+
+  .modal-dialog
+    margin: 0px
+    margin-bottom: 0px
+    margin-top: 0px
+    padding-left: 0px
+    overflow-y: auto !important
+
+  .content-modal
+    background: red
+    background-color: red
+
+  .modalmask
+    +make-modal
+    background: $black
+    opacity: 0
+
+  .modalmask:target
+    opacity: 1
+    pointer-events: auto
+
+  .modalmask:target .movedown
+    margin: 10% auto
+
+
+  .modalmask:target .rotate
+    transform: rotate(360deg) scale(1,1)
+    -webkit-transform: rotate(360deg) scale(1,1)
+
+  .modalmask:target .resize
+    width: 100% !important
+    height: 100% !important
+
+  .margin-top-content
+    margin-top: 10px 
+
+  .modal-title
+    background: #00a1df
+    height: 50px
+    text-align: center
+    color: white
+    font-size: 1.5rem
+    display:inline
+    padding: 10px
+
+  .a-reference
+    color: white 
+    cursor: pointer 
+
+  .container-data
+    overflow: scroll
+    background: white
+    position: relative  
+    height: 80vh
+    width: 100% !important
+    +media-breakpoint-up(lg)
+    height: 70vh
+    +media-breakpoint-down(xs)
+    height: 70vh

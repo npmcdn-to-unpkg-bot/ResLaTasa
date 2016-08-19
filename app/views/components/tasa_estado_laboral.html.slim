@@ -1,0 +1,52 @@
+.container-fluid.tasa-div-form
+  tasa-navegacion [estatus] = "estadosNavegacion.EstadoLaboral"
+  .cabecero.container-fluid
+    div.icon
+      i.typcn-briefcase.typcn
+    div.text
+       h3
+        strong 
+          | {{'prestatario.estadolaboral.titulo' | i18n }}
+       h5.hidden-xs-down
+          | {{'prestatario.estadolaboral.subtitulo' | i18n }}
+  .cuerpo.container-fluid
+      br
+      div.text_pregunta
+        h3.text-blue
+         | {{'prestatario.estadolaboral.pregunta' | i18n }}
+      br
+      div.catalogoestados
+       div.empleos 
+        div.imagen-puesto [ngSwitch]="puesto" 
+          <img src="images/empleadoOn-01.svg" *ngSwitchCase="'empleado'">
+          <img src="images/empleadoOff-01.svg" *ngSwitchDefault>
+        div.radio-group  
+          label.btn-default.waves-effect.waves-button.waves-float.waves-dark.btn-radio id="empleado" [ngClass]="{'active': puesto === 'empleado'}"
+                input type="radio" name="options" autocomplete="off" value="empleado" (change)="puesto = $event.target.value"
+                | {{'prestatario.estadolaboral.empleado' | i18n }}
+       div.empleos
+        div.imagen-puesto [ngSwitch]="puesto"
+          <img  src="images/empresarioOn-01.svg" *ngSwitchCase="'empresario'">
+          <img  src="images/empresarioOff-01.svg" *ngSwitchDefault>
+        div.radio-group
+          label.btn-default.waves-effect.waves-button.waves-float.waves-dark.btn-radio [ngClass]="{'active': puesto === 'empresario'}"
+                input type="radio" name="options" id="option1" autocomplete="off" value="empresario"  (change)="puesto = $event.target.value"
+                | {{'prestatario.estadolaboral.empresario' | i18n }}
+       div.empleos
+        div.imagen-puesto [ngSwitch]="puesto"
+          <img  src="'otroOn-01.svg'" *ngSwitchCase="'otro'">
+          <img  src="'otroOff-01.svg" *ngSwitchDefault>
+        div.radio-group
+          label.btn-default.waves-effect.waves-button.waves-float.waves-dark.btn-radio id="otro" [ngClass]="{'active': puesto === 'otro'}"
+                input type="radio" name="options"  autocomplete="off" value="otro"  (change)="puesto = $event.target.value"
+                | {{'prestatario.estadolaboral.otro' | i18n }}
+  br
+  .btns-navegation.container-fluid
+      a.btn-back.waves-effect.waves-float.waves-button (click)="back()"
+        div
+          i.fa-angle-left.button-icon-container-fa
+          span.button-text-icon {{'prestatario.estadolaboral.atras' | i18n }}
+      button.btn-next.waves-effect.waves-float.waves-button type='submit' (click)="next()" [disabled] = "puesto == ''"
+        div
+          i.fa-angle-right.button-icon-container-fa
+          span.button-text-icon {{'prestatario.identificacion.next' | i18n }}

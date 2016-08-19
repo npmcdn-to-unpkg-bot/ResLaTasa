@@ -1,0 +1,146 @@
+.tasa-div-form
+  .section-header
+    |Titulo de seccion
+  .section-body
+    form
+      .col-lg-6.container-fluid
+        .tasa-input  [formGroup]="registerForm"
+          label for="firstname" Label de un input
+          tasa-tooltip [text]= "'Texto desde UI'" [position]= "'top'"
+          input placeholder="Agrega un valor" formControlName="firstname" [(ngModel)] ="model.name"
+        .tasa-input
+          label for="inputdemo2" [ngClass]="{'label-disabled': disabledLabel}"
+            |Label de un input desabilitado
+          input name="inputdemo2" [disabled]='disabledLabel'
+          .error-message Error de validacion
+        .tasa-input
+          label for='selectdemo' Label para select
+          .tasa-select
+            select.option-deafult name="selectdemo" [(ngModel)]='combo' [ngClass]="{'selectedOption':combo!=''}"
+              option value="" Seleciona
+              option template="ngFor let opcion of opciones" [value]="opcion.id" {{opcion.texto}}
+      .col-lg-6.container-fluid
+        .tasa-input
+          label for="inputdemo1" Label de un input 
+          input name="inputdemo1" placeholder="Agrega un valor"
+        .tasa-input
+          label for="inputdemo2" [ngClass]="{'label-disabled': disabledLabel}"
+            |Label de un input desabilitado
+          input name="inputdemo2" [disabled]='disabledLabel'
+        .tasa-input
+          label for='selectdemo' [ngClass]="{'label-disabled': disabledLabel}" Label para select
+          .tasa-select
+            select.option-deafult name="selectdemo" [(ngModel)]='combo' [ngClass]="{'selectedOption':combo!=''}" [disabled]='disabledLabel'
+              option value="" Seleciona
+              option template="ngFor let opcion of opciones" [value]="opcion.id" {{opcion.texto}}
+  br
+  p
+    | Aqui {{model.name}}
+  br
+  .container-fluid.col-lg-5
+    upload-images (imageSelected)="imageSelected($event)" [parameters] = 'parametresIFE'
+  br 
+  br
+  button.btn-back.waves-effect.waves-button.waves-float.waves-dark  (click)="eliminar('IFE')"
+    div
+      span.button-text-icon = 'Eminar imagen'
+  br
+  button.btn-back.waves-effect.waves-button.waves-float.waves-dark [disabled]='disabledLabel'
+    div
+      i.fa.fa-angle-left
+      span.button-text-icon = 'Texto de botonuno'
+  button.btn-back.waves-effect.waves-button.waves-float.waves-dark
+    div
+      i.fa.fa-angle-left
+      span.button-text-icon = 'Texto de botondos'
+  br
+  br
+  button.btn-next.waves-effect.waves-button.waves-float.waves-light [disabled]='disabledLabel'
+    div
+      span.button-text-icon = 'Texto de botontres'
+      i.fa.fa-angle-right
+  button.btn-next.waves-effect.waves-button.waves-float.waves-light.col-lg-3
+    div
+      span.button-text-icon = 'Texto de botoncuatro'
+      i.fa.fa-angle-right
+  br
+  br
+  .div-boton
+    button.fluid.btn-info-blue.waves-effect.waves-button.waves-float.waves-light [disabled]='disabledLabel'
+      div
+        i.fa.fa-usd
+        span.button-text-icon = 'Texto de boton'
+  button.btn-info-blue.waves-effect.waves-button.waves-float.waves-light
+    div
+      i.fa.fa-usd
+      span.button-text-icon = 'Texto de boton'
+  br
+  br
+  button.btn-info-orange.waves-effect.waves-button.waves-float.waves-light [disabled]='disabledLabel'
+    div
+      i.fa.fa-bar-chart
+      span.button-text-icon = 'Texto de boton'
+  button.btn-info-orange.waves-effect.waves-button.waves-float.waves-light
+    div
+      i.fa.fa-bar-chart
+      span.button-text-icon = 'Texto de boton'
+  br
+  br
+  .row.radio-group  [ngSwitch]="imagen"
+    .imagen-btn
+      img src="{{imagen == 0 ? '/images/RviajeOn-01.svg' : '/images/RviajeOff-01-01.svg'}}"
+      br
+      button.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === '0'}" [disabled]='disabledLabel' [ngSwitch]="imagen"
+        div
+          span.button-text-icon Texto de boton1
+    .imagen-btn
+      img src="{{imagen == 1 ? '/images/RviajeOn-01.svg' : '/images/RviajeOff-01-01.svg'}}"
+      br
+      button.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 1}" [ngSwitch]="imagen" (click)="imagen = 1"
+        div
+          span.button-text-icon Texto de boton2
+    .imagen-btn
+      img src="{{imagen == 2 ? '/images/RviajeOn-01.svg' : '/images/RviajeOff-01-01.svg'}}"
+      br
+      button.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 2}" [ngSwitch]="imagen" (click)="imagen = 2"
+        div 
+          span.button-text-icon Texto de boton3
+    .imagen-btn
+      button.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 3}" [ngSwitch]="imagen" (click)="imagen = 3"
+        div 
+          span.button-text-icon boton sin imagen
+  br
+  br
+  .checkbox
+    input type="checkbox" id="cb"
+    label for="cb"
+    a Texto de check
+  br
+  a.black Texto de link
+  br
+  .row
+    .switch-btns
+      button.switch-left.waves-button.waves-float [ngClass]="{'active': opcion === 1}" [ngSwitch]="opcion" (click)="opcion = 1"
+        div 
+          span.button-text-icon Opcion1
+      button.switch-right.waves-button.waves-float [ngClass]="{'active': opcion === 2}" [ngSwitch]="opcion" (click)="opcion = 2"
+        div 
+          span.button-text-icon Opcion2
+  br
+  br
+  h1.blue
+    |Titulo H1 azul
+  h1.black
+    strong
+      |Titulo H1 negro bold
+  h1.orange
+    |Titulo H1 naranga
+  h2.blue-dark
+    |Titulo H2 azul obscuro
+  p.black
+    |Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar aliquam nibh non pulvinar. Donec at metus lacinia, consequat nisi non, consequat elit. Vivamus euismod orci enim, in accumsan sem hendrerit congue. Nam malesuada ultricies mattis. Cras fringilla cursus nisl sit amet sodales. Donec aliquam nisl et est rutrum, vel finibus est consectetur. Sed dictum luctus metus sit amet interdum. Phasellus nec dictum nibh. In vehicula tristique lorem, ut vestibulum dolor pellentesque at. Curabitur ultrices mi a gravida finibus. Aliquam consequat ligula odio. Vivamus blandit porttitor mi at fermentum.
+    strong
+      |Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pulvinar aliquam nibh non pulvinar. Donec at metus lacinia, consequat nisi non, consequat elit. Vivamus euismod orci enim, in accumsan sem hendrerit congue. Nam malesuada ultricies mattis. Cras fringilla cursus nisl sit amet 
+    |sodales. Donec aliquam nisl et est rutrum, vel finibus est consectetur. Sed dictum luctus metus sit amet interdum. Phasellus nec dictum nibh. In vehicula tristique lorem, ut vestibulum dolor pellentesque at. Curabitur ultrices mi a gravida finibus. Aliquam consequat ligula odio. Vivamus blandit porttitor mi at fermentum.
+
+    

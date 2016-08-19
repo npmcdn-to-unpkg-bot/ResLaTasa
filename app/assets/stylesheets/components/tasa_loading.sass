@@ -1,0 +1,207 @@
+@import "tasa"
+
+tasa-loading
+
+.modalLoading
+  position: fixed
+  width: 100% !important
+  height: 100% !important
+  font-family: Arial, sans-serif
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: rgba(0,0,0,0.5)
+  z-index: 99999
+  -webkit-transition: opacity 900ms ease-in
+  -moz-transition: opacity 900ms ease-in
+  transition: opacity 900ms ease-in
+  pointer-events: none
+
+.modalLoading:target
+  opacity: 1
+  pointer-events: auto
+
+.modalLoading:target .movedown
+  margin: 10% auto
+
+.container-data
+  overflow: scroll
+  background: white
+  position: relative  
+  height: 80vh
+  width: 100% !important
+  +media-breakpoint-up(lg)
+    height: 70vh
+  +media-breakpoint-down(xs)
+    height: 70vh    
+
+.modalLoading:target .rotate
+  transform: rotate(360deg) scale(1,1)
+    -webkit-transform: rotate(360deg) scale(1,1)
+
+.modalLoading:target .resize
+  width: 100% !important
+  height: 100% !important
+
+.transitionUno
+  animation-duration: 1.5
+  animation-iteration-count: infinite
+
+.imgcontent
+  margin: 25%
+  text-align: center
+  opacity: 1 !important
+  +media-breakpoint-down(xs)
+    margin: 75%
+  +media-breakpoint-up(sm)
+    margin: 50%
+  +media-breakpoint-up(lg)
+    margin: 25%
+
+
+@keyframes gwd-gen-yen1gwdanimation_gwd-keyframes
+  0%
+    left: 20px
+    top: 2px
+    opacity: 0
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  56.82%
+    left: 20px
+    top: 2px
+    opacity: 0
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  61.36%
+    left: 20px
+    top: 2px
+    opacity: 0.5
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  72.73%
+    left: 20px
+    top: 2px
+    opacity: 1
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  100%
+    left: 20px
+    top: 2px
+    opacity: 1
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+
+@keyframes gwd-gen-qgqjgwdanimation_gwd-keyframes
+  0%
+    left: 10px
+    top: 2px
+    opacity: 0
+    transform: matrix3d(0.9999904807, 0, 0.0043633093, 0, 0.0043633093, 0, -0.9999904807, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  45.45%
+    left: 10px
+    top: 2px
+    opacity: 0
+    transform: matrix3d(1, 0, 0.0044, 0, 0.0044, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  50%
+    left: 10px
+    top: 2px
+    opacity: 0.5
+    transform: matrix3d(0.9999904807, 0, 0.0043633093, 0, 0.0043633093, 0, -0.9999904807, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  61.36%
+    left: 10px
+    top: 2px
+    opacity: 1
+    transform: matrix3d(0.9999904807, 0, 0.0043633093, 0, 0, 1, 0, 0, -0.0043633093, 0, 0.9999904807, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  100%
+    left: 10px
+    top: 2px
+    opacity: 1
+    transform: matrix3d(1, 0, 0.0044, 0, 0, 1, 0, 0, -0.0044, 0, 1, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+
+@keyframes gwd-gen-usfugwdanimation_gwd-keyframes
+  0%
+    left: 0px
+    top: 2px
+    opacity: 0 
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  34.09%
+    left: 0px
+    top: 2px
+    opacity: 0  
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  38.64%
+    left: 0px
+    top: 2px
+    opacity: 0.5    
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  50%
+    left: 0px
+    top: 2px
+    opacity: 1 
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  100%
+    left: 0px
+    top: 2px
+    opacity: 1
+    transform: matrix3d(1, 0, 0.0044, 0, 0, 1, 0, 0, -0.0044, 0, 1, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+
+
+@keyframes gwd-gen-gdingwdanimation_gwd-keyframes
+  0%
+    left: 30px
+    top: 2px
+    opacity: 0
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  68.18%
+    left: 30px
+    top: 2px
+    opacity: 0
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  72.73%
+    left: 30px
+    top: 2px
+    opacity: 0.5
+    transform: matrix3d(1, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  84.09%
+    left: 30px
+    top: 2px
+    opacity: 1
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+  100%
+    left: 30px
+    top: 2px
+    opacity: 1
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+    animation-timing-function: linear
+   
+
+.animated
+  animation: gwd-gen-usfugwdanimation_gwd-keyframes 2.4s linear 0s infinite normal forwards
+
+.animatedTwo
+  animation: gwd-gen-qgqjgwdanimation_gwd-keyframes 2.4s linear 0s infinite normal forwards
+
+.animatedThree
+  animation: gwd-gen-yen1gwdanimation_gwd-keyframes 2.4s linear 0s infinite normal forwards  
+
+.animatedFour
+  animation: gwd-gen-gdingwdanimation_gwd-keyframes 2.4s linear 0s infinite normal forwards
+
+
+
+

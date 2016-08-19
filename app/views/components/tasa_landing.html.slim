@@ -1,0 +1,32 @@
+
+.background-landing
+  .tasa-app
+    tasa-header [isLanding] = "true" [isLogged] = "false"
+    div.texto-inicial  
+      h1.blue-dark
+        p
+            span {{ 'landing.conecta' | i18n }}
+            span.blue {{'landing.personaCredito' | i18n }} 
+            span {{'landing.directo' | i18n }}      
+            span.orange {{'landing.invesionistas' | i18n }}
+        p
+          | =
+        p  {{'landing.tasas' | i18n }}     
+    tasa-video
+    .credito
+      a href="{{prestatarioUrl}}"
+        button.fluid.btn-info-blue.waves-effect.waves-button.waves-float.waves-light
+          div
+            i.fa.fa-usd
+            span.button-text-icon {{'landing.interesaCredito' | i18n }}
+      p.hidden-xs-down
+        | {{'landing.creditos' | i18n }}
+    .inversion
+      button.fluid.btn-info-orange.waves-effect.waves-button.waves-float.waves-light
+        div
+          i.fa.fa-bar-chart
+          span.button-text-icon {{'landing.interesaInvertir' | i18n }}
+      pre
+        | {{'landing.invierte' | i18n }}
+
+  tasa-footer

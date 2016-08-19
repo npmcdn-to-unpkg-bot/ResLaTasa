@@ -1,0 +1,32 @@
+.principal.waves-effect.waves-float.waves-button [ngClass]="{'active': isValid}"
+  .header {{parameters.title}}
+  .body
+    .input-div
+      input type="file" (change)="fileChange($event)" (click) = "fileClick($event)"
+    .image-div
+      img src="{{!isValid ? parameters.imgSrc : parameters.imgSrcActive}}" [ngClass]="{'horizontal': parameters.orientation == 'horizontal', 'vertical': parameters.orientation == 'vertical'}"
+div template="ngIf  uploadProgress > 0"
+  .progess-bar
+    .bar [style.width]="uploadProgress + '%'"
+.error-message template="ngIf errorMessage !== null" {{errorMessage}}
+.webcam id="webCam"
+  .camera
+    .header
+      i.fa.fa-times-circle-o (click)="hideWebCam()"
+    .body 
+      video-container
+      canvas-container
+    br
+    .footer
+      .button
+        button.button-camera.waves-effect.waves-button.waves-float.waves-light [disabled]='existPhoto' (click)="takePhoto()"
+          div
+            i.fa.fa-camera
+      .opcion template="ngIf existPhoto"
+        button.btn-next.waves-effect.waves-button.waves-float.waves-light.fluid (click)="removePhoto()"
+          | {{'uploadImages.repetir' | i18n}}
+      .opcion template="ngIf existPhoto"
+        button.btn-next.waves-effect.waves-button.waves-float.waves-light.fluid (click)="takePhoto()"
+          div
+            | {{'uploadImages.usar' | i18n}}
+        

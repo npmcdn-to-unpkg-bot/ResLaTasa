@@ -1,0 +1,4 @@
+span.tooltip-container
+  i.fa.fa-question-circle-o.blue-dark (mouseover)="show = true" (mouseleave) = "show = false"
+  div class="tooltip {{position}}" [ngClass]="{'show': show}" [ngStyle]="{'height':height}"
+    pre {{text}}

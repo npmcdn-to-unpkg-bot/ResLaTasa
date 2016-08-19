@@ -1,0 +1,112 @@
+.tasa-div-form 
+  .section-header
+    | {{'prestatario.personalInformation.subtitle' | i18n}}
+  .section-body
+    form.margin-bottom-form [ngFormModel]='personalInformationForm' 
+      div
+        p.titlulo-principal-interno
+          | {{'prestatario.personalInformation.internalTitle' | i18n}}       
+      div
+        p.titlulo-interno
+          | {{'prestatario.personalInformation.textNecessary' | i18n}}      
+      .display-button.fluid
+        .imagen-btn.div-button-ooptionLeft
+          button.width-btn-image.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': isIfe===true}" [ngSwitch]="isIfe" (click)= "identificactionChange('IFE')"
+            div 
+              span.button-text-icon {{'prestatario.personalInformation.opcion1' | i18n}}
+        .imagen-btn.div-button-ooptionuno
+          button.width-btn-image.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': isIfe===false}" [ngSwitch]="isIfe" (click)= "identificactionChange('Passport')"
+            div 
+              span.button-text-icon {{'prestatario.personalInformation.opcion2' | i18n}}
+      div.titulo-clearlyNotice  
+        p.titlulo-interno 
+          |{{'prestatario.personalInformation.clearlyNotice' | i18n}}      
+      div.titulo-clearlyNotice 
+        p.aviso
+         | {{'prestatario.personalInformation.indication' | i18n}}
+      .row.display-img template="ngIf isIfe && modelo.type_id=== 'IFE'" 
+        .upload-img-container template="ngIf !frenteYReverso" [ngClass]="{'upload-img-circle': !frenteYReverso}"
+          upload-images [parameters] = 'parametersImage[0]' (imageSelected)="imageSelected(parametersImage[0])"
+        .upload-img-container template="ngIf frenteYReverso"
+          upload-images [parameters] = 'parametersImage[1]' (imageSelected)="imageSelected(parametersImage[1])"
+        .upload-img-container template="ngIf frenteYReverso"
+          upload-images [parameters] = 'parametersImage[2]' (imageSelected)="imageSelected(parametersImage[2])"     
+      .div-switch template="ngIf isIfe"
+        .row
+          .switch-btns.fluid
+            button.switch-left.waves-button.waves-float [ngClass]="{'active': !frenteYReverso}" [ngSwitch]="frenteYReverso" (click)="frenteReversoChange('frente')"
+              div 
+                span.button-text-icon {{'prestatario.personalInformation.oneFile' | i18n}}
+            button.switch-right.waves-button.waves-float [ngClass]="{'active': frenteYReverso}" [ngSwitch]="frenteYReverso" (click)="frenteReversoChange('frenteReverso')"
+              div 
+                span.button-text-icon {{'prestatario.personalInformation.twoFiles' | i18n}}
+      .row.display-img        
+        .upload-img-circle template="ngIf !isIfe && modelo.type_id=='Passport'" 
+          upload-images [parameters] = 'parametersImage[3]' (imageSelected)="imageSelected(parametersImage[3])"                 
+        .div-content-fa-ife template="ngIf modelo.type_id!=''"
+          tasa-tooltip [text]= "'Por seguridad, sube una foto \n donde aparezcan a cuadro tu \n rostro y tu identificación.'" [position]= "'top'" [height]="'50px'"                     
+        .upload-img-circle template="ngIf modelo.type_id!=''" 
+          upload-images [parameters] = 'parametersImage[4]' (imageSelected)="imageSelected(parametersImage[4])"          
+      hr.line
+      .col-lg-6.container
+        .tasa-input
+          label for='dondeNaciste' {{'prestatario.personalInformation.dondeNaciste' | i18n}}
+          .tasa-select
+            select.option-deafult.margin-bott-select ngControl='dondeNaciste' id='dondeNaciste' [(ngModel)]='modelo.lugar_nacimiento' [ngClass]="{'selectedOption':modelo.lugar_nacimiento!=''}"
+             option value='' {{'prestatario.personalInformation.dondeNacistePH' | i18n}}
+             option template="ngFor let lugar of lugarNacimiento" [value]="lugar.estado" {{lugar.estado}}
+        control-messages control='dondeNaciste'
+        .tasa-input ngControlGroup='fechaNacimiento'
+          label for= 'fechaNacimiento.anio' {{'prestatario.personalInformation.cuandoNacite' | i18n}}
+          .row
+            .content-select
+              .tasa-select
+                select.option-deafult.margin-bott-select ngControl='fechaNacimiento.anio' [(ngModel)]='anio' [ngClass]="{'selectedOption':anio!=''}"  (click)="onSelectDays('','')" (change) = "calcularRFC($event, 'anio')"
+                  option value="" Año
+                  option template="ngFor let anios of aniosLst" [value]="anios" {{anios}}              
+            .content-select
+              .tasa-select
+                select.option-deafult.margin-bott-select ngControl='fechaNacimiento.mes' [(ngModel)]='mes' [ngClass]="{'selectedOption':mes!=''}" (click)="onSelectDays('','')" (change) = "calcularRFC($event, 'mes')"
+                  option value="" Mes 
+                  option template="ngFor let mes of mesLst" [value]="mes.id" {{mes.mes}}        
+            .content-select
+              .tasa-select
+                select.option-deafult.margin-bott-select ngControl='fechaNacimiento.dia' [(ngModel)]='dia' [ngClass]="{'selectedOption':dia!=''}" (change) = "calcularRFC($event,'dia')"
+                  option value="" Dia
+                  option template="ngFor let dias of diasLst" [value]="dias" {{dias}}                    
+        control-messages control='fechaNacimiento.anio'
+        .tasa-input
+          label.label-margin for='RFC'  {{'prestatario.personalInformation.rfc' | i18n}}
+          br
+          input ngControl='RFC' id='RFC'  placeholder="{{'prestatario.personalInformation.rfcPH'| i18n}}" [(ngModel)]='modelo.rfc_homoclave' (blur)='validateRFC()'
+          control-messages control='RFC'
+        br
+      .col-lg-6.container-fluid
+        .tasa-input
+          label for='estadoCivil'  {{'prestatario.personalInformation.estadoCivil' | i18n}}
+          .tasa-select
+            select.option-deafult.margin-bott-select ngControl='estadoCivil' id='estadoCivil' [(ngModel)]='modelo.estado_civil' [ngClass]="{'selectedOption':modelo.estado_civil!=''}"
+              option value="" Seleccionar
+              option template="ngFor let estado of estadoCivil" [value]="estado.estado_civil" {{estado.estado_civil}}
+        control-messages control='estadoCivil'            
+        .tasa-input
+          label for='telFijo'  {{'prestatario.personalInformation.telefonoFijo' | i18n}}
+          br
+          input ngControl='telFijo' id='telFijo' placeholder="{{'prestatario.personalInformation.telefonoFijoPH'| i18n }}" [(ngModel)]='modelo.telefono_fijo'
+          control-messages control='telFijo'
+        .tasa-input
+          label.label-margin for='telCelular'  {{'prestatario.personalInformation.celular' | i18n}}
+          br
+          input ngControl='telCelular' id='telCelular' placeholder="{{'prestatario.personalInformation.celularPH'| i18n }}" [(ngModel)]='modelo.celular'
+          control-messages control='telCelular'
+        br
+  button.btn-next.waves-effect.waves-button.waves-float.waves-light.col-lg-3 (click)='next()' [disabled]='!personalInformationForm.valid || !isValid'
+    div
+      span.button-text-icon = 'Siguiente'
+      i.fa.fa-angle-right
+
+<div [hidden]= "!closeLoading">
+  tasa-loading [closeLoadingBoolean]="closeLoading"
+</div>      
+
+

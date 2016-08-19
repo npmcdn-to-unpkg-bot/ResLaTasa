@@ -1,0 +1,31 @@
+  <!DOCTYPE html>
+<html>
+
+<head>
+  <title>Latasa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+  <%= yield %>
+
+    <%= javascript_include_tag 'application' %>
+      <!-- IE required polyfills (from CDN), in this exact order -->
+      <script src="javascript/dependencias/shim.min.js"></script>
+      <script src="javascript/dependencias/zone.min.js"></script>
+      <script src="javascript/dependencias/Reflect.js"></script>
+      <script src="javascript/dependencias/system.src.js"></script>
+
+ 
+      <!-- 2. Configure SystemJS -->
+      <script src="/javascript/system.config.js"></script>
+      <script>
+        System.import('tasa/landing_main.js').catch(function(err){ console.error(err);  });
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+@import "tasa"
+
+datos-estado-laboral
+  +make-col
+  +make-col-span(12)
+
+  input, select,h6
+    +make-col
+    +make-col-span(12)
+  select
+    margin-bottom: 0px !important  
+  hr
+    height: 1px
+    background-color: #00548b
+    margin-top: 10px
+    margin-bottom: 20px
+
+  .with-padding-top
+    padding-top: 15px
+  
+  .with-padding-bottom
+    padding-bottom: 15px
+    
+  .tasa-from
+    +make-col
+    +make-col-span(12)
+    padding-left: 0px
+    padding-right: 0px
+  
+  .blue-dark
+    text-align: center
+  
+  .ingresolibre
+    +media-breakpoint-up(lg)
+      +make-col-span(5)
+      +make-col-offset(3.5)     
+  
+  .imagen-btn
+    +make-col-span(12)
+  p
+    text-align: justify !important
+    +media-breakpoint-down(sm)
+      line-height: 1
+    
+  .gray-light
+    color: #a4a4a4 !important
+    margin-bottom: 0px
+
+  #imagenIngreso
+    +make-col
+    padding-left: 0px
+    padding-right: 0px
+    +make-col-span(12)
+    +make-col-offset(0)
+    +media-breakpoint-up(sm)
+      +make-col-span(6)
+      +make-col-offset(3)  
+    +media-breakpoint-up(lg)
+      padding-left: 15px 
+      padding-right: 15px
+      +make-col-span(8)
+      +make-col-offset(2)
+
+  .without-padding
+    padding: 0px
+    text-align: start
+  
+  .alineaCheck
+    text-align: right
+  
+  .checkbox
+    z-index: 1
+    +media-breakpoint-up(xs)
+      top: 41px
+    +media-breakpoint-down(xs)
+      top: 41px
+    +media-breakpoint-up(sm)
+      top: 49px
+    +media-breakpoint-up(lg) 
+      right: 26%
+  
+  .btnComponents
+    margin-bottom: 10px
+    +make-col-span(12)
+    +media-breakpoint-up(lg)
+      margin-bottom: 0px
+      +make-col-span(8)
+      +make-col-offset(4)
+  
+  .btnEnviar
+    +make-col-span(12)
+    +media-breakpoint-up(lg)
+      +make-col-span(8)
+
+  .atras
+    +media-breakpoint-up(xs)
+      +make-col-span(6)
+    +media-breakpoint-up(md)
+      +make-col-span(2)
+
+  .clave
+    +media-breakpoint-down(sm)
+      padding-right: 5px
+      padding-left: 0px
+  
+  .comprobantes
+    +media-breakpoint-down(sm)
+      padding-right: 0px
+      padding-left: 5px
+
+  .clave button
+    +make-col-span(12)
+    +make-col-offset(0)
+    +media-breakpoint-up(md)
+      +make-col-span(10)
+      +make-col-offset(2)
+    +media-breakpoint-up(lg)
+      +make-col-span(6)
+      +make-col-offset(6)
+
+  .comprobantes button
+    +make-col-span(12)
+    +media-breakpoint-up(md)
+      +make-col-span(10)
+    +media-breakpoint-up(lg)  
+      +make-col-offset(0)
+      +make-col-span(6)
+      
+  //Estilo para las imagenes de los puestos laborales
+
+  .empresario
+    line-height: 1
+
+  .catalogoestados
+    .imagen-btn
+      padding: 0
+      @include media-breakpoint-up(md)
+        +make-col-span(4)
+      @include media-breakpoint-down(sm)
+        +make-col-span(12)
+      .imagen-puesto
+        +make-col
+        @include media-breakpoint-down(sm)
+          +make-col-span(3)
+          padding-left: 0px
+          padding-right: 0px
+        @include media-breakpoint-up(sm)
+          +make-col-span(12)
+      .radio-group
+        +make-col
+        @include media-breakpoint-down(sm)
+          padding-top: 15px
+          padding-left: 15px
+          padding-right: 0
+          +make-col-span(9)
+        @include media-breakpoint-up(sm)
+          +make-col-span(12)
+        .btnOptions
+          @include media-breakpoint-up(lg)
+            +make-col-span(11)
+          @include media-breakpoint-up(xs)
+            +make-col-span(12)
+          span
+            @include media-breakpoint-up(md)
+              font-size: .9rem         
+            @include media-breakpoint-up(lg)
+              font-size: 1rem  
+      img
+        @include media-breakpoint-down(sm)
+          width: 70px
+          height: 70px
+  
+  //Estilo para clave ciec 
+  .clave_ciec
+    padding-top: 15px
+    +media-breakpoint-up(lg)
+      +make-col-span(5)
+      +make-col-offset(3.5)
+    +media-breakpoint-down(md)  
+      padding-left: 15px
+      padding-right: 15px
+
+  .btnEnviarCIEC
+    +media-breakpoint-up(lg)
+      +make-col-span(4)
+      +make-col-offset(4)
+    +media-breakpoint-down(sm)
+      +make-col-span(10)
+      +make-col-offset(1)
+    +media-breakpoint-down(md)
+      +make-col-span(7)
+      +make-col-offset(2.5)

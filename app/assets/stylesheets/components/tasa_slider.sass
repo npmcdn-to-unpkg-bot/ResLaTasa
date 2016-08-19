@@ -1,0 +1,165 @@
+@import "tasa"
+
+tasa-slider
+
+    input[type=range]
+        /*removes default webkit styles*/
+        -webkit-appearance: none
+        
+        /*fix for FF unable to apply focus style bug */
+        border: 1px solid white
+        
+        /*required for proper track sizing in FF*/
+        width: 100%
+
+    /*Chrome*/
+    input[type=range]::-webkit-slider-runnable-track
+        width:  300px
+        height: 10px
+        background: silver
+        border: none
+        border-radius: 3px
+
+    /*Chrome*/
+    input[type=range]::-webkit-slider-thumb
+        -webkit-appearance: none
+        background-image: url('/images/mayorMenorC-01.svg')
+        border: none
+        padding: 0px
+        height: 32px
+        width: 32px
+        margin-top: -14px
+
+    input[type=range]:focus
+        outline: none
+
+    input[type=range]:focus::-webkit-slider-runnable-track
+        background: #ccc
+
+
+    /*Mozilla*/
+    input[type=range]::-moz-range-track
+        height: 10px
+        background: silver
+        border: none
+        border-radius: 10px 50px 50px 10px
+
+    input[type=range]::-moz-range-thumb
+        -webkit-appearance: none
+        border: none
+        height: 34px    
+        width: 32px
+        background: url(/images/mayorMenorC-01.svg)        
+        margin: 0px
+        padding-: 0px
+
+
+    /*hide the outline behind the border*/
+    input[type=range]:-moz-focusring
+        outline: none
+        background: transparent
+
+
+    input[type=range]::-moz-range-progress
+        background-color: gray
+        height: 10px
+        border-radius: 10px 20px 20px 10px
+
+
+
+    input[type=range]::-ms-track
+        width: 100% !important
+        height: 30px
+        border-radius: 10px
+
+        
+        /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+        background: transparent
+        
+        /*leave room for the larger thumb to overflow with a transparent border */
+        border-color: transparent
+        border-width: 6px 0
+
+        /*remove default tick marks*/
+        color: transparent
+
+    input[type=range]::-ms-fill-lower
+        background-color: green
+        height: 10px
+
+    input[type=range]::-webkit-slider-thumb:before
+        background: green
+        background-color: green
+        height: 10px    
+
+    input[type=range]::-ms-fill-upper
+        background-color: green
+        background: green
+        height: 10px
+
+    //input[type=range]::-ms-thumb
+      //  border: none
+       // height: 16px
+       // width: 16px
+       // border-radius: 50%
+       // background: goldenrod
+
+    input[type=range]:focus::-ms-fill-lower
+        background: #888
+
+    input[type=range]:focus::-ms-fill-upper 
+        background: #ccc
+
+    output
+        position: absolute
+        background-image: linear-gradient(#00548b, #00548b)
+        width: 60px
+        height: 25px
+        text-align: center
+        color: white
+        border-radius: 4px
+        display: inline-block
+        bottom: 150%
+        left: 0
+        margin-left: -1.5%
+        font-size: 11px
+        font-weight: bold
+        padding-left: 4px
+        padding-right: 4px
+        padding-top: 3px
+
+    output:after 
+        content: ""
+        position: absolute
+        width: 15px
+        height: 0
+        border-top: 5px solid #00548b
+        border-left: 9px solid transparent
+        border-right: 8px solid transparent
+        top: 100%
+        left: 50%
+        margin-left: -12px
+        margin-top: 0px
+
+    form
+        position: relative
+        margin: 50px
+
+    .range
+        height: 10px
+
+    .inputDiv
+        position: relative
+        width: 100%
+        margin: 0px
+        padding: 0px
+
+    .box
+        background: gray
+        height: 10px
+        width: 0px
+        margin-top: -17px
+        border: none
+        position: relative   
+        border-radius: 10px 0px 0px 10px
+

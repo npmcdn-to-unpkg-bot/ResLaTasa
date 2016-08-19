@@ -1,0 +1,51 @@
+.foo
+  .container-fluid.div-form
+    .cabeceros.container-fluid
+      div.logo
+        
+          img  src="images/logo.svg"
+            
+      div.text
+        h1.blue
+          strong 
+            | {{ 'login_tasa.titulo' | i18n }}
+    form [ngFormModel]="autenticacionForm" (submit)="loginAccess()"
+      .cuerpos.container-fluid
+        .tasa-input
+          label for='nameuser'  {{ 'login_tasa.formulario.user' | i18n }}
+          br
+          input ngControl='nameuser' id='nameuser' placeholder='darthvader83@mail.com' (keyup)="changeMessage()"
+          control-messages control="nameuser"
+          <div style="color:#F72136; display:table" *ngIf="showMessageError">
+            p style="font-size:0.75rem"
+              | {{ 'login_tasa.formulario.userpasserr' | i18n }}
+          </div>   
+        .tasa-input 
+          label for='password'  {{ 'login_tasa.formulario.password' | i18n }}
+          br
+          input type="password" ngControl='password' id='password' placeholder='Clave secreta' (keypress)="handleEvent($event)"
+          <div *ngIf="show">
+            i.fa.fa-eject
+          </div>  
+          control-messages control="password"
+          br
+        .tasa-input
+          h5.blue style="text-align:right"
+            strong
+              a (click)="next()" {{ 'login_tasa.formulario.recordatorio' | i18n }}
+
+        .btns-navegation
+            button.btn-next.waves-effect.waves-button.waves-float.waves-light type="submit" [disabled]="!autenticacionForm.valid"
+              div
+                span.button-text-icon {{ 'login_tasa.formulario.entrar' | i18n }}
+                i.fa.fa-angle-right
+    br            
+    p id='sugerencia'  {{ 'login_tasa.formulario.sugerencia' | i18n }}
+    div.text style="text-align:center"
+      strong
+        a href="#" style="margin-right:3px" {{ 'login_tasa.formulario.invertir' | i18n }} 
+        ||
+        a href="{{prestatarioUrl}}" style="margin-left:3px" {{ 'login_tasa.formulario.credito' | i18n }}
+<div [hidden]= "!closeLoading">
+  tasa-loading [closeLoadingBoolean]="closeLoading"
+</div>

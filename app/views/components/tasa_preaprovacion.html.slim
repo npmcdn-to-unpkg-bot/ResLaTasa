@@ -1,0 +1,33 @@
+.container-fluid.tasa-div-form
+  .cuerpo.container-fluid
+    .text-center
+      img.img-fluid.center-block src="/images/tasa_aviso_animado/woohoo.png"
+      h2.black 
+        strong  
+          | {{'prestatario.presolicitud.avisotitulo' | i18n}} 
+      br
+    div
+      div
+          <p class="alll show-one gray-dark">
+            | {{'prestatario.presolicitud.terminos' | i18n}} 
+              <span >
+                <a class="my-decoration" (click) = 'showModal()'>{{'prestatario.presolicitud.terminos2' | i18n}}</a>
+              </span>
+              {{'prestatario.presolicitud.terminos3' | i18n}} 
+            </p>   
+          
+            <p class="alll show-two gray-dark">
+              | {{'prestatario.presolicitud.terminosg' | i18n}} 
+            </p>
+
+          form [ngFormModel]='identificacionForm'
+            .checkbox
+              input type="checkbox" ngControl='terminos' id="terminos"  name="terminos"
+              label for="terminos"
+              a.sec.show-two (click) = 'showModal()' {{'prestatario.presolicitud.terminos_condiciones' | i18n}} 
+              p.other.show-one.blue-dark
+                | {{'prestatario.presolicitud.terminos_condiciones' | i18n}}    
+      div.button-centrar
+        button.btn-next.waves-effect.waves-button.waves-float.waves-light.col-lg-3 [disabled]='!identificacionForm.valid' (click)='next()'
+            div
+            span.button-text-icon {{'prestatario.presolicitud.boton_envio' | i18n}}

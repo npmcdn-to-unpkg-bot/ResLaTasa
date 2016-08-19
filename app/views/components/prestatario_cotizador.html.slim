@@ -1,0 +1,238 @@
+.tasa-div-form
+  .section-header-cotizador
+  .section-body
+    form  [ngFormModel]='cotizadorForm'   
+      div.container-fluid
+          div.content-plazo
+            div
+              .tasa-input
+                label for="monto" {{'prestatario.cotizador.amountneeded' | i18n}}
+                input [(ngModel)]="model.monto" ngControl="monto" [hidden]="true" name="monto"                 
+                div.display-input-cotizacion
+                  input placeholder="$1,234,567" [(ngModel)]="model.monto" name="monto" ngControl="monto" (click)="selectAll($event)" (blur) = "setCurrency($event, 'montos')" autocomplete="off"
+                  control-messages control="monto"
+              div.spacediv_slider-top.display-slider
+                tasa-slider idComponent="input" idElement="foo" step="5000" value="{{model.monto}}"min="{{montoInicial}}" nameComponent="monto" max="{{montoFinal}}" (change)="onChangeSlider($event,'monto')"
+            .spacediv-top-down
+              .tasa-input
+                label for="plazo" {{'prestatario.cotizador.timepayment' | i18n}}
+                input  ngControl="plazo" [(ngModel)]="model.plazo" [hidden]="true" name="plazo"              
+                div.display-input-cotizacion  
+                  input placeholder="11 meses" name="plazo" ngControl="plazo" [(ngModel)]="model.plazo" (click)="selectAll($event)" (blur) = "setMonths($event)" autocomplete="off"
+                  control-messages control="plazo"                                
+              div.display-slider.spacediv_slider-top
+                tasa-slider idComponent="input2" idElement="foo2" step="1" value="{{model.plazo}}" min="{{plazoInicial}}" nameComponent="plazo" max="{{plazoFinal}}" (change)="onChangeSlider($event,'plazo')"             
+            .error-message {{errorMessage}}                         
+            .div-tasas
+              table
+                tr.text-table.border-column
+                  th
+                    b {{'prestatario.cotizador.valuation' | i18n}} 
+                    span.superscript
+                      sup &nbsp; (1)                    
+                  th
+                    b {{'prestatario.cotizador.tablemonthlypayment' | i18n}}
+                    span.superscript
+                      sup &nbsp; (2)
+                tr.text-div-foot.backgroud-column
+                  td.td-top
+                    b {{tasa_min}}% -  {{tasa_max}}%  
+                  td.td-top
+                    b {{pagomensual_minshow}} - {{pagomensual_maxshow}} 
+              div
+                p.text-indicator {{'prestatario.cotizador.referenceone' | i18n}}
+                p.text-indicator.divtablefooter {{'prestatario.cotizador.referencetwo' | i18n}}
+              div [hidden]="true"
+                .tasa-input
+                  label for="tasa_min" tasa-minima
+                  input name="tasa_min" ngControl="tasa_min" [(ngModel)]="model.tasa_min"
+                .tasa-input
+                  label for="tasa_max" tasa-maxima   
+                  input name="tasa_max" ngControl="tasa_max" [(ngModel)]="model.tasa_max"
+                .tasa-input
+                  label for="pago_mensual_min" pago_mensual_min   
+                  input name="pago_mensual_min" ngControl="pago_mensual_min" [(ngModel)]="model.pago_mensual_min"
+                .tasa-input
+                  label for="pago_mensual_max" pago_mensual_max   
+                  input name="pago_mensual_max" ngControl="pago_mensual_max" [(ngModel)]="model.pago_mensual_max"                                                
+          div.column-img
+            .aplica-div
+              .tasa-input
+                label for="aplica" {{'prestatario.cotizador.usecreditoption' | i18n}}
+                input [hidden]="true" name="aplica" ngControl="aplica" [(ngModel)]="model.aplica"
+              ngControl
+            .error-message [hidden]="errUseCredit" Debe Seleccionar una opción
+            div.row
+              .conten-img
+               .imagen-btn-cotizador
+                 div.hidden-img [hidden]="hiddenImage"
+                  img src="{{(imagen == 'debts' || imagenFocus== 'debtsOver') ? '/images/cotizador/pagarDeudas1-01.svg' : '/images/cotizador/pagarDeudas-01.svg'}}"
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'debts'}" [ngSwitch]="imagen" (click)="onSelect('debts')" (mousemove)="overButton('debts')" (mouseleave)="quitFocus()"
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.paydebts' | i18n}}
+              .conten-img
+               .imagen-btn-cotizador
+                 div.hidden-img  [hidden]="hiddenImage"
+                  img src="{{(imagen=='viaje' || imagenFocus== 'viajeOver')? '/images/cotizador/viaje1-01.svg' : '/images/cotizador/viaje-01.svg'}}"               
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'viaje'}" [ngSwitch]="imagen" (click)="onSelect('viaje')" (mousemove)="overButton('viaje')" (mouseleave)="quitFocus()"
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.travel' | i18n}}
+              .conten-img.display-business
+               .imagen-btn-cotizador
+                 div.hidden-img  [hidden]="hiddenImage"
+                  img src="{{(imagen == 'negocio' || imagenFocus=='negocioOver')? '/images/cotizador/negocio1-01.svg' : '/images/cotizador/negocio-01.svg'}}"
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'negocio'}" [ngSwitch]="imagen" (click)="onSelect('negocio')" 
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.startbusiness' | i18n}}                   
+            div.button-group-center class="row" [class.img-top-foot]="!hiddenImage"
+              div.display-business-desktop [class.img-top-foot]="hiddenImage"
+               .imagen-btn-cotizador
+                 div.hidden-img [hidden]="hiddenImage"
+                  img src="{{(imagen == 'negocio' || imagenFocus=='negocioOver')? '/images/cotizador/negocio1-01.svg' : '/images/cotizador/negocio-01.svg'}}"
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'negocio'}" [ngSwitch]="imagen" (click)="onSelect('negocio')" (mousemove)="overButton('negocio')" (mouseleave)="quitFocus()"
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.startbusiness' | i18n}}
+              div.display-business-desktop [class.img-top-foot]="hiddenImage"
+               .imagen-btn-cotizador                
+                 div.hidden-img [hidden]="hiddenImage"
+                  img src="{{(imagen == 'estudios'  || imagenFocus=='estudiosOver') ? '/images/cotizador/estudios1-01.svg' : '/images/cotizador/estudios-01.svg'}}"
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'estudios'}" [ngSwitch]="imagen" (click)="onSelect('estudios')" (mousemove)="overButton('estudios')" (mouseleave)="quitFocus()"
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.studies' | i18n}}
+            div.button-group-center.row [class.img-top-foot]="!hiddenImage"
+              .conten-img.display-business [class.img-top-foot]="hiddenImage"
+               .imagen-btn-cotizador               
+                 div.hidden-img [hidden]="hiddenImage"
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'estudios'}" [ngSwitch]="imagen" (click)="onSelect('estudios')" 
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.studies' | i18n}}            
+              .conten-img [class.img-top-foot]="hiddenImage"
+               .imagen-btn-cotizador                  
+                 div.hidden-img [hidden]="hiddenImage"
+                  img src="{{(imagen == 'hogar' || imagenFocus=='hogarOver')  ? '/images/cotizador/mejorarHogar1-01.svg' : '/images/cotizador/mejorarHogar-01.svg'}}"
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'hogar'}" [ngSwitch]="imagen" (click)="onSelect('hogar')" (mousemove)="overButton('hogar')" (mouseleave)="quitFocus()"
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.homeimprovements' | i18n}}
+              .conten-img [class.img-top-foot]="hiddenImage"
+               .imagen-btn-cotizador                  
+                 div.hidden-img [hidden]="hiddenImage"
+                  img src="{{(imagen == 'other' || imagenFocus=='otherOver') ? '/images/cotizador/otro1-01.svg' : '/images/cotizador/otro-01.svg'}}"
+                 div
+                 button.widthbtonimg.btn-image.waves-effect.waves-button.waves-float.waves-light [ngClass]="{'active': imagen === 'other'}" [ngSwitch]="imagen" (click)="onSelect('other')" (mousemove)="overButton('other')" (mouseleave)="quitFocus()"
+                  div 
+                   span.button-text-icon {{'prestatario.cotizador.usecredit.other' | i18n}}
+            div  
+              div.padding-top.ocultos.text-div [hidden]="hiddenPayDebts"
+                .tasa-input                  
+                  label for='aplicado_en' {{'prestatario.cotizador.usepreviouscredit' | i18n}}
+                  .tasa-select
+                    select.option-deafult.margin-bott-select ngControl="aplicado_en" [(ngModel)]="model.aplicado_en" (change)="onChange($event)" [ngClass]="{'selectedOption':model.aplicado_en!=''}"
+                     option value="" Seleccionar
+                     option template="ngFor let u of usesCredit" [value]="u.nombre" {{u.nombre}}
+                control-messages control="aplicado_en"
+              div.padding-top.ocultos.text-div [hidden]="anotherHidden" [class.padding-top-image]="hiddenImage"
+                  .tasa-input
+                    label for="aplicado_otro" {{'prestatario.cotizador.whichother' | i18n}}
+                    input.pagoMensual.noRadioButton type="text" ngControl="aplicado_otro" [(ngModel)]= "model.aplicado_otro" placeholder=""
+                  control-messages control="aplicado_otro"
+      
+      div.space-montos.row.container-fluid
+        div.col-lg-2
+          .container-fluid
+            .tasa-input.txt-havedebts
+              label {{'prestatario.cotizador.havedebts' | i18n}}
+            .div-switch
+              .row
+                .switch-btns-cotizador.fluid
+                  button.switch-left.waves-button.waves-float [ngClass]="{'active': optionDeuda}" [ngSwitch]="opcion" (click)="onSelectDeudas(true)"
+                    div 
+                      span.button-text-icon Si
+                  button.switch-right.waves-button.waves-float [ngClass]="{'active': !optionDeuda}" [ngSwitch]="opcion" (click)="onSelectDeudas(false)"
+                    div 
+                      span.button-text-icon No                   
+        div.overflow-element.style-tablet-input-monto [ngClass]="{'text-debt-active': tieneDeuda, 'label-disabled':!tieneDeuda}"
+          .tasa-input.margin-bottom-input
+            label for='monto_deuda' [ngClass]="{'label-disabled': !tieneDeuda}" {{'prestatario.cotizador.montdebt' | i18n}}
+            br
+            input.pagoMensual.noRadioButton type="" placeholder="$1,234,567"  ngControl="monto_deuda" [disabled]="!tieneDeuda" [(ngModel)]="model.monto_deuda" (blur) = "setCurrency($event,'')"
+            control-messages control='monto_deuda'
+        div.overflow-element.style-tablet-input-monto [ngClass]="{'text-debt-active': tieneDeuda, 'text-debt-inactive': !tieneDeuda}"
+          .tasa-input.margin-bottom-input
+            label for='pago_mensual' [ngClass]="{'label-disabled': !tieneDeuda}" {{'prestatario.cotizador.monthlypayment' | i18n}}
+            br  
+            input.pagoMensual.noRadioButton id="pago_mensual" placeholder="$1,234,567" ngControl="pago_mensual" (blur) = "setCurrency($event,'')" [disabled]="!tieneDeuda" [(ngModel)]="model.pago_mensual"  
+            control-messages control='pago_mensual'
+  div.title-register-minutes 
+    span
+      h2.text-minutes {{'prestatario.cotizador.registerforminutes' | i18n }}    
+  div.button-rigth
+    button.button-principal.btn-next.waves-effect.waves-button.waves-float.waves-light.col-lg-3 type='submit'  (click)="next()" [disabled]='!cotizadorForm.valid'
+      div
+        span.button-text-icon {{'prestatario.cotizador.createaccountCotizador' | i18n}}
+  hr.line
+  div.title.register-minutes
+    h2.text-center.blue-dark {{'prestatario.cotizador.textgetcredit' | i18n}}
+  div.title.register-minutes
+    h2.text-center.blue-dark {{'prestatario.cotizador.textgetcreditbusiness' | i18n}}      
+div.row.spacediv-top-down.mnj-obtcredito
+  div.col-lg-4.col-xs-12.col-sm-4
+    div.img-top-foot
+      img src='/images/cotizador/step1-01.svg'
+    div.text-div-foot
+      label 
+        b {{'prestatario.cotizador.createaccount' | i18n}}
+    div.foot 
+      label     
+        p {{'prestatario.cotizador.step01' | i18n}}     
+      div.button-foot
+        button.button-step01.btn-next.waves-effect.waves-button.waves-float.waves-light.col-lg-3 type='submit'  (click)="next()" [disabled]='!cotizadorForm.valid'
+          div
+            span.button-text-icon {{'prestatario.cotizador.createaccountCotizador' | i18n}}      
+  div.col-lg-4.col-xs-12.col-sm-4
+    div.img-top-foot
+      img src='/images/cotizador/step2-01.svg'
+    div.text-div-foot
+      label 
+        b {{'prestatario.cotizador.armrecord' | i18n}}
+    div.foot
+      label 
+        p {{'prestatario.cotizador.step02' | i18n}}
+    div.foot-option
+      label
+        i.color-tick.fa.fa-check aria-hidden="true"
+        span.text-div-list {{'prestatario.cotizador.step02point01' | i18n}}
+      label
+        i.color-tick.fa.fa-check aria-hidden="true"
+        span.text-div-list {{'prestatario.cotizador.step02point02' | i18n}}        
+  div.col-lg-4.col-xs-12.col-sm-4
+    div.img-top-foot
+      img src='/images/cotizador/step3-01.svg'    
+    div.text-div-foot
+      label
+        b {{'prestatario.cotizador.sendrequest' | i18n}}
+    div.foot
+      p {{'prestatario.cotizador.step03' | i18n}}
+      p {{'prestatario.cotizador.step03point01' | i18n}} 
+       
+         
+<div [hidden]= "!closeLoading">
+  tasa-loading [closeLoadingBoolean]="closeLoading"
+</div>
+
+
+
+
+
+  
+
+
+
+
+  

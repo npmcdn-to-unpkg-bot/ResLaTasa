@@ -1,0 +1,140 @@
+
+/*UIKit Mixins*/
+@mixin make-colTasa()
+  +make-col
+  padding-left: 0 !important
+  padding-right: 0 !important 
+
+@mixin tasaInput()
+  height: 34px
+  padding: 3px 10px
+  border: 1px solid $blue-light 
+  border-radius: 3px !important
+  color: $black !important
+  box-shadow: none
+  background-color: white !important
+  margin-bottom: 1em !important
+  &:focus
+    border-color: $blue !important
+    outline: none
+  &:disabled
+    border-color: $gray !important
+    background-color: white !important
+
+@mixin placeholder()
+  input::-webkit-input-placeholder
+    @content
+  input:-moz-placeholder
+    @content
+  input::-moz-placeholder
+    @content
+  input:-ms-input-placeholder
+    @content
+
+@mixin tasaButton($bgColor, $textColor, $bdrColor, $bgColorD, $textColorD , $textColorH , $bdrColorH, $textColorA , $bdrColorA, $iconSize)
+  height: 44px !important
+  border-radius: 3px !important
+  padding: 5px !important
+  background-color: $bgColor
+  color: $textColor 
+  font-weight: normal
+  border: 1px solid $bdrColor 
+  text-decoration: none !important
+  font-size: 0.875rem
+  +media-breakpoint-up(sm) //tablet, desktop
+    font-size: 1rem 
+  &:disabled
+    font-weight: normal !important
+    box-shadow: 0 0 0 0 !important
+    color: $textColorD !important
+    background-color: $bgColorD !important
+    border: 1px solid $bgColorD !important
+  &:hover,
+  &:focus
+    color: $textColorH  
+    border: 1px solid $bdrColorH 
+    outline: none !important
+    font-weight: bold
+  &:active
+    color: $textColorA 
+    border: 1px solid $bdrColorA
+    font-weight: bold
+  i
+    font-size: $iconSize
+    padding-left: 5px
+    padding-right: 5px
+
+@mixin make-modal()
+  position: fixed
+  width: 100% !important
+  height: 100% !important
+  font-family: Arial, sans-serif
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: rgba(0,0,0,0.5)
+  z-index: 99999
+  -webkit-transition: opacity 900ms ease-in
+  -moz-transition: opacity 900ms ease-in
+  transition: opacity 900ms ease-in
+  pointer-events: none
+  
+@mixin addTopSpace
+  padding-top: $interlineado-componentes
+
+@mixin imagenBtn
+  +make-col
+  text-align: center
+
+  .active
+    background-color: $blue !important
+    border-color: $blue !important
+    color: white !important
+
+  img
+    width: 75px
+    height: 75px
+    
+  .btn-image
+    +tasaButton(white, $gray-dark, $blue-light, $gray-light, $gray, $blue, $blue-light, white, $blue, $iconosInfomrativos)
+
+@mixin switchBtns
+  +make-col
+  text-align: center
+
+  .active
+    background-color: $blue !important
+    color: white !important
+    border-color: $blue !important
+    font-weight: bold !important
+  
+  button
+    +tasaButton($gray-light, $gray, $gray-light, $gray-light, $gray, $gray, $gray-light, $gray, $gray-light, $iconosInfomrativos)
+    border-radius: 0 !important
+    font-weight: normal !important
+    height: 34px !important
+
+    span
+      padding: $padding
+
+
+  .switch-left
+    border-top-left-radius: 15px !important
+    border-bottom-left-radius: 15px !important
+    width: 50% !important
+    
+  .switch-right
+    border-top-right-radius: 15px !important
+    border-bottom-right-radius: 15px !important
+    width: 50% !important
+
+@mixin btnNext
+  +tasaButton($green, white, $green, $gray-light, $gray, white, $green, white, $green, $iconosNavegacion)
+  i
+    font-weight: bold
+    padding-right: 0
+@mixin h1
+  font-size: 1rem
+  +media-breakpoint-up(sm) //tablet, desktop
+    font-size: 1.5rem
